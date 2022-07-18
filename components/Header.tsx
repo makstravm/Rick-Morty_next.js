@@ -13,8 +13,8 @@ const Header = () => {
   const { pathname } = useRouter();
 
   return (
-    <nav>
-      <div className="nav-container">
+    <header>
+      <nav>
         <Link href={MAIN}>
           <a className="logo">
             <Image src={logo} alt="logo" />
@@ -29,8 +29,8 @@ const Header = () => {
             </Link>
           ))}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 

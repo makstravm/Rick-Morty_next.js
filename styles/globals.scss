@@ -1,8 +1,55 @@
-@import 'reset';
-@import 'vars';
-@import 'fonts';
+@import "reset";
+@import "vars";
+@import "fonts";
 
 html,
 body {
   @extend %monts-400;
+  font-size: 10px;
+  line-height: 10px;
+  background-color: #27272e;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 5px 20px 0px #2eff00c4;
+  nav {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  div {
+    display: flex;
+  }
+
+  .link {
+    padding: 10px;
+    @extend %plateia-700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.8em;
+    line-height: 3em;
+    height: 100%;
+    display: block;
+    transition: all 0.3s;
+    &:hover {
+      text-shadow: 0 0 16px #00ff04;
+    }
+    &.--active {
+      text-shadow: 0 0 16px #00ff04;
+    }
+  }
+
+  .logo {
+    padding: 0;
+    display: inline-block;
+    line-height: 0;
+  }
 }

@@ -1,16 +1,37 @@
-import Head from 'next/head';
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-const Header = () => (
-  <>
-    <Head>
-      <title>Rick &amp; Morty | Info</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta
-        name="keywords"
-        content="Rick, Morty, Rick and Morty, movies"
-      ></meta>
-    </Head>
-  </>
-);
+import { routesUrls } from "constants/routes";
+import { navigation } from "constants/navigation";
+
+import logo from "public/logo.png";
+
+const { MAIN } = routesUrls;
+
+const Header = () => {
+  const { pathname } = useRouter();
+
+  return (
+    <header>
+      <nav>
+        <Link href={MAIN}>
+          <a className="logo">
+            <Image src={logo} alt="logo" />
+          </a>
+        </Link>
+        <div>
+          {navigation.map(({ id, title, path }) => (
+            <Link key={id} href={path}>
+              <a className={`link ${pathname === path ? "--active" : ""}`}>
+                {title}
+              </a>
+            </Link>
+          ))}
+        </div>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;

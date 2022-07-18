@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 400;
-  src: local('Montserrat-Regular'),
-    url(fonts/Montserrat-Regular.woff2) format('woff2'),
-    url(fonts/Montserrat-Regular.woff) format('woff');
+  src: local("Montserrat-Regular"),
+    url(fonts/Montserrat-Regular.woff2) format("woff2"),
+    url(fonts/Montserrat-Regular.woff) format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Plateia';
+  font-family: "Plateia";
   font-weight: 700;
-  src: local('Plateia-Bold'), url(fonts/Plateia-Bold.woff2) format('woff2'),
-    url(fonts/Plateia-Bold.woff) format('woff');
+  src: local("Plateia-Bold"), url(fonts/Plateia-Bold.woff2) format("woff2"),
+    url(fonts/Plateia-Bold.woff) format("woff");
   font-display: swap;
 }

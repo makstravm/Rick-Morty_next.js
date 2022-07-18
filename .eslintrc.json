@@ -9,6 +9,8 @@
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "no-multi-spaces": "error",
+    "arrow-body-style": ["error", "never"],
+    "quotes": "off",
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": ["return"] },

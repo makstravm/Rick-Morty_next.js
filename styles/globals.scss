@@ -5,4 +5,38 @@
 html,
 body {
   @extend %monts-400;
+  font-size: 10px;
+  line-height: 10px;
+  background-color: #27272e;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 5px 20px 0px #2eff00c4;
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  div {
+    display: flex;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    @extend %plateia-700;
+    font-size: 1.8em;
+    line-height: 3em;
+    height: 100%;
+    display: block;
+  }
+  .nav a {
+    padding: 10px;
+  }
 }

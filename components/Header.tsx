@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NavBar from './NavBar';
 
 const Header = () => (
   <>
@@ -10,6 +11,7 @@ const Header = () => (
         content="Rick, Morty, Rick and Morty, movies"
       ></meta>
     </Head>
+    <NavBar />
   </>
 );
 

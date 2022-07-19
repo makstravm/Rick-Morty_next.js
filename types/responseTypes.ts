@@ -1,13 +1,14 @@
 export interface IResponse<T> {
-  info: {
-    count: number | null;
-    pages: number;
-    next: string;
-    prev: number | null;
-  };
+  info: IAllInfo;
   results: T[];
 }
 
+export interface IAllInfo {
+  count: number | null;
+  pages: number;
+  next: string;
+  prev: number | null;
+}
 export interface ICharacter {
   id: number;
   name: string;

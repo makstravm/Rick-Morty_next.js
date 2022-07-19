@@ -1,8 +1,8 @@
-import Layout from "@components/Layout";
 import { GetServerSideProps, NextPage } from "next";
+import Layout from "@components/Layout";
 import CharactersList from "@components/CharactersList";
+import Pagination from "@components/Pagination";
 import { ICharacter, IResponse } from "types/responseTypes";
-import { useRouter } from "next/router";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(
@@ -25,6 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Characters: NextPage<IResponse<ICharacter>> = ({ results, info }) => (
   <Layout>
     <CharactersList characters={results} />
+    <Pagination info={info} />
   </Layout>
 );
 

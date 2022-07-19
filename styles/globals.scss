@@ -124,3 +124,39 @@ footer {
     overflow: hidden;
   }
 }
+
+ul.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 35px 0 50px;
+  li.link-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    &.--active {
+      border-radius: 50%;
+      border: 1px solid #00ff04;
+    }
+  }
+  a,
+  span {
+    @extend %plateia-700;
+    padding: 10px;
+    font-size: 1.4em;
+    display: block;
+    line-height: 1.6em;
+    color: #fff;
+  }
+  a {
+    text-decoration: none;
+    transition: all 0.3s;
+    &:hover {
+      text-shadow: 0 0 16px #00ff04;
+      stroke: #24252b;
+    }
+  }
+}

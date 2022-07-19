@@ -9,7 +9,7 @@ export const putPagesNumbersInArray = (
       arrayPagesNumber.push(index.toString());
     } else if (!arrayPagesNumber.length) {
       arrayPagesNumber.push(String(1));
-    } else if (index + 2 > activePage && activePage > index - 2) {
+    } else if (index + 4 > activePage && activePage > index - 4) {
       arrayPagesNumber.push(index.toString());
     } else if (index + 1 > allPages) {
       arrayPagesNumber.push(index.toString());

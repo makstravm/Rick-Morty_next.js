@@ -7,7 +7,19 @@ body {
   @extend %monts-400;
   font-size: 10px;
   line-height: 10px;
+  color: #fff;
   background-color: #27272e;
+  height: 100%;
+}
+
+body > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex-grow: 1;
 }
 
 header {
@@ -51,5 +63,21 @@ header {
     padding: 0;
     display: inline-block;
     line-height: 0;
+  }
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+footer {
+  background-color: #4d4d4d;
+  padding: 10px 0;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

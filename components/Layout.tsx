@@ -1,6 +1,7 @@
-import Head from 'next/head';
-import { FC, ReactNode } from 'react';
-import Header from './Header';
+import Head from "next/head";
+import { FC, ReactNode } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => (
   <>
@@ -11,7 +12,8 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => (
     </Head>
 
     <Header />
-    {children}
+    <main>{children}</main>
+    <Footer />
   </>
 );
 

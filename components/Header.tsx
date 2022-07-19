@@ -7,7 +7,7 @@ import { navigation } from "constants/navigation";
 
 import logo from "public/logo.png";
 
-const { MAIN } = routesUrls;
+const { MAIN, CHARACTERS } = routesUrls;
 
 const Header = () => {
   const { pathname } = useRouter();
@@ -22,7 +22,7 @@ const Header = () => {
         </Link>
         <div>
           {navigation.map(({ id, title, path }) => (
-            <Link key={id} href={path}>
+            <Link key={id} href={`${path}/1`}>
               <a className={`link ${pathname === path ? "--active" : ""}`}>
                 {title}
               </a>

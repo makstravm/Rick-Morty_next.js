@@ -2,8 +2,25 @@ import type { NextPage } from "next";
 import Layout from "@components/Layout";
 
 import style from "../styles/Home.module.scss";
+import MainCharacters from "@components/MainCharacters";
 
-const Home: NextPage = () => (
+export const getStaticProps = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/character/1,2`);
+
+  const data = await response.json();
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { characters: data },
+  };
+};
+
+const Home: NextPage = ({ characters }: any) => (
   <Layout title="Home">
     <div className={`${style.container} container`}>
       <div className={style.title}>
@@ -18,7 +35,7 @@ const Home: NextPage = () => (
           trouble.
         </p>
       </div>
-      <div></div>
+      <MainCharacters characters={characters} />
     </div>
   </Layout>
 );

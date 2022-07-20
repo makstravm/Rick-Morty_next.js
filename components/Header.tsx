@@ -7,7 +7,7 @@ import { navigation } from "constants/navigation";
 
 import logo from "public/logo.png";
 
-const { MAIN, CHARACTERS } = routesUrls;
+const { MAIN } = routesUrls;
 
 const Header = () => {
   const { pathname } = useRouter();

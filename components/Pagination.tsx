@@ -1,13 +1,12 @@
-import { putPagesNumbersInArray } from "helpers/putPagesNumbersInArray";
+import { FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { IAllInfo } from "types/responseTypes";
 
-interface IPaginationProps {
-  info: IAllInfo;
-  path: string;
-}
-const Pagination = ({ info, path }: IPaginationProps) => {
+import { putPagesNumbersInArray } from "helpers/putPagesNumbersInArray";
+
+import { IPaginationProps } from "types/responseTypes";
+
+const Pagination: FC<IPaginationProps> = ({ info, path }) => {
   const {
     query: { page: activePage },
   } = useRouter();

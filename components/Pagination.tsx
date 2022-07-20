@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { putPagesNumbersInArray } from "helpers/putPagesNumbersInArray";
 
-import { IPaginationProps } from "types/responseTypes";
+import { IPaginationProps } from "types/types";
 
 const Pagination: FC<IPaginationProps> = ({ info, path }) => {
   const {

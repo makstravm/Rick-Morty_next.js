@@ -41,3 +41,10 @@ export interface IPaginationProps {
   info: IAllInfo;
   path: string;
 }
+
+export interface ICharactersListProps {
+  characters: ICharacter[];
+}
+export interface IMainCharacterProps {
+  character: ICharacter;
+}

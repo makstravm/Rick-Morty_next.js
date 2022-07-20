@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
 import MainCharacters from "components/MainCharacters";
 
-import { IHomeProps } from "types/responseTypes";
+import { IHomeProps } from "types/types";
 
 import style from "../styles/Home.module.scss";
 

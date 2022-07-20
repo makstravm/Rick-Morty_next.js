@@ -1,10 +1,13 @@
-import type { NextPage } from "next";
-import Layout from "@components/Layout";
+import type { GetStaticProps, NextPage } from "next";
+
+import Layout from "components/Layout";
+import MainCharacters from "components/MainCharacters";
+
+import { IHomeProps } from "types/responseTypes";
 
 import style from "../styles/Home.module.scss";
-import MainCharacters from "@components/MainCharacters";
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(`${process.env.BASE_URL}/character/1,2`);
 
   const data = await response.json();
@@ -20,7 +23,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home: NextPage = ({ characters }: any) => (
+const Home: NextPage<IHomeProps> = ({ characters }) => (
   <Layout title="Home">
     <div className={`${style.container} container`}>
       <div className={style.title}>

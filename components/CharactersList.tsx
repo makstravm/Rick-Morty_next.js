@@ -1,3 +1,4 @@
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ICharacter } from "types/responseTypes";
@@ -6,7 +7,7 @@ interface ICharactersListProps {
   characters: ICharacter[];
 }
 
-const CharactersList = ({ characters }: ICharactersListProps) => (
+const CharactersList: FC<ICharactersListProps> = ({ characters }) => (
   <div className="container list">
     {characters.map((character) => (
       <div className="list__item" key={character.id}>

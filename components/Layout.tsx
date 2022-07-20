@@ -1,14 +1,10 @@
 import Head from "next/head";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
+import { ILayoutProps } from "types/responseTypes";
 import Footer from "./Footer";
 import Header from "./Header";
 
-interface ILayout {
-  children: ReactNode;
-  title: string;
-}
-
-const Layout: FC<ILayout> = ({ children, title }) => (
+const Layout: FC<ILayoutProps> = ({ children, title }) => (
   <>
     <Head>
       <title>{title} | Rick &amp; Morty</title>

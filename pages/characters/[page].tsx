@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
-import Layout from "@components/Layout";
-import CharactersList from "@components/CharactersList";
-import Pagination from "@components/Pagination";
+import Layout from "components/Layout";
+import CharactersList from "components/CharactersList";
+import Pagination from "components/Pagination";
 import { ICharacter, IResponse } from "types/responseTypes";
 import { routesUrls } from "constants/routes";
 
@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const Characters: NextPage<IResponse<ICharacter>> = ({ results, info }) => (
-  <Layout>
+  <Layout title="Characters">
     <CharactersList characters={results} />
     <Pagination info={info} path={routesUrls.CHARACTERS} />
   </Layout>

@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Layout from "@components/Layout";
+import Layout from "components/Layout";
 
 import style from "../styles/Home.module.scss";
-import MainCharacters from "@components/MainCharacters";
+import MainCharacters from "components/MainCharacters";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.BASE_URL}/character/1,2`);

@@ -20,6 +20,14 @@ export interface ICharacter {
   gender: string;
   image: string;
   created: string;
+  location: {
+    name: string;
+    url: string;
+  };
+  origin: {
+    name: string;
+    url: string;
+  };
   episode: string[];
   url: string;
 }
@@ -45,6 +53,11 @@ export interface IPaginationProps {
 export interface ICharactersListProps {
   characters: ICharacter[];
 }
+
 export interface IMainCharacterProps {
+  character: ICharacter;
+}
+
+export interface ICharacterProps {
   character: ICharacter;
 }

@@ -2,8 +2,8 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IMainCharactersProps } from "types/types";
-import styles from "../styles/MainCharacters.module.scss";
 import { routesUrls } from "constants/routes";
+import styles from "../styles/MainCharacters.module.scss";
 
 const MainCharacters: FC<IMainCharactersProps> = ({ characters }) => {
   return (

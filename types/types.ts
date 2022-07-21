@@ -54,7 +54,7 @@ export interface ICharactersListProps {
   characters: ICharacter[];
 }
 
-export interface IMainCharacterProps {
+export interface IPageCharacterProps {
   character: ICharacter;
 }
 

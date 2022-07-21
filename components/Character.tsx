@@ -38,19 +38,25 @@ const Character = ({ character }: ICharacterProps) => (
         <span>Episodes:</span>
         <span>{character.episode.length}</span>
       </div>
-      {character?.origin?.url && (
-        <div>
-          <span>Origin:</span>
+      <div>
+        <span>Origin:</span>
+        {character?.origin?.url ? (
           <Link href={character.origin.url}>
             <a>{character.origin.name}</a>
           </Link>
-        </div>
-      )}
+        ) : (
+          <span>---</span>
+        )}
+      </div>
       <div>
         <span>Location:</span>
-        <Link href={character.location.url}>
-          <a>{character.location.name}</a>
-        </Link>
+        {character?.location?.url ? (
+          <Link href={character.location.url}>
+            <a>{character.location.name}</a>
+          </Link>
+        ) : (
+          <span>---</span>
+        )}
       </div>
     </div>
   </div>

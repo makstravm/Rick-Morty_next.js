@@ -1,26 +1,10 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 
 import Layout from "components/Layout";
 import Character from "components/Character";
+import { IPageCharacterProps } from "types/types";
 
-import { ICharacter, IPageCharacterProps } from "types/types";
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/character/1,2,3,4,5`);
-
-  const data: ICharacter[] = await response.json();
-
-  const paths = data.map(({ id }) => ({
-    params: { page: id.toString() },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(
     `${process.env.BASE_URL}/character/${context.params?.page}`
   );
@@ -37,6 +21,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: { character: data },
   };
 };
+
 const MainCharacter: NextPage<IPageCharacterProps> = ({ character }) => (
   <Layout title={character.name}>
     <Character character={character} />

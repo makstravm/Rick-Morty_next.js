@@ -1,5 +1,5 @@
 export enum routesUrls {
-  MAIN = "/",
+  HOME = "/",
   CHARACTERS = "/characters",
   CHARACTER_MAIN = "/character/main",
   CHARACTER_SUPPORTING = "/character/supporting",

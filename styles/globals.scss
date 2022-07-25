@@ -160,3 +160,159 @@ ul.pagination {
     }
   }
 }
+
+.page-404 {
+  height: 100%;
+  .page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.page-404 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .bg {
+    position: absolute;
+    background-position: center center;
+    background-size: contain;
+    top: calc(-25vw - 25vh);
+    right: calc(-25vw - 25vh);
+    left: calc(-25vw - 25vh);
+    bottom: calc(-25vw - 25vh);
+    animation: 300s linear 0s reverse infinite spinning;
+  }
+  &__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 6.4rem;
+    max-height: 50%;
+    padding: 0 145px 0 50px;
+    span {
+      position: relative;
+      font-family: "Zombie", sans-serif;
+      font-size: 34rem;
+      text-shadow: 0 0 16px #00ff04;
+      -webkit-text-stroke: 4px#82be49;
+      z-index: 4;
+    }
+  }
+  &__image-box {
+    max-width: 400px;
+    position: relative;
+    z-index: 5;
+    animation: 1s linear 0s rotateImg;
+  }
+  &__first-number {
+    margin-right: -45px;
+    opacity: 0;
+    animation: 1s linear 1s forwards showNumberOne;
+  }
+  &__second-number {
+    margin-left: -145px;
+    opacity: 0;
+    animation: 1s linear 1.5s forwards showNumberTwo;
+  }
+  &__link {
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    animation: 0.6s linear 2.5s forwards showLinkHome;
+    a {
+      display: inline-block;
+      padding: 10px 15px;
+      @extend %plateia-700;
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s;
+      &:hover {
+        text-shadow: 0 0 16px #00ff04;
+        stroke: #24252b;
+      }
+    }
+  }
+  a {
+    display: inline-block;
+    padding: 10px 15px;
+    @extend %plateia-700;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s;
+    &:hover {
+      text-shadow: 0 0 16px #00ff04;
+      stroke: #24252b;
+    }
+  }
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateImg {
+  0% {
+    opacity: 0;
+    transform: rotate(220deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes showNumberOne {
+  0% {
+    opacity: 0;
+    transform: translateX(200px) scale(0) skew(45deg, 30deg);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) skew(0deg, 0deg);
+  }
+}
+
+@keyframes showNumberTwo {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px) scale(0) skew(24deg, 60deg);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) skew(0deg, 0deg);
+  }
+}
+
+@keyframes showLinkHome {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

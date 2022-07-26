@@ -7,15 +7,13 @@ import { navigation } from "constants/navigation";
 
 import logo from "public/logo.png";
 
-const { MAIN } = routesUrls;
-
 const Header = () => {
   const { pathname } = useRouter();
 
   return (
     <header>
       <nav>
-        <Link href={MAIN}>
+        <Link href={routesUrls.HOME}>
           <a className="logo">
             <Image src={logo} alt="logo" />
           </a>

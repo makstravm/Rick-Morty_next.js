@@ -14,3 +14,10 @@
     url(fonts/Plateia-Bold.woff) format("woff");
   font-display: swap;
 }
+@font-face {
+  font-family: "Zombie";
+  src: local("Zombie Control Rotalic"),
+    url(fonts/Zombie-Rotalic.woff2) format("woff2"),
+    url(fonts/Zombie-Rotalic.woff) format("woff");
+  font-display: swap;
+}

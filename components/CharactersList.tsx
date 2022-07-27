@@ -1,15 +1,17 @@
 import { FC } from "react";
 import Image from "next/image";
+import { routesUrls } from "constants/routes";
 import Link from "next/link";
 
 import { ICharactersListProps } from "types/types";
-import { checkRouteCharacter } from "helpers/checkRouteCharacter";
+
+const { CHARACTER } = routesUrls;
 
 const CharactersList: FC<ICharactersListProps> = ({ characters }) => (
   <div className="container characters-list">
     {characters.map((character) => (
       <div className="characters-list__item" key={character.id}>
-        <Link href={`${checkRouteCharacter(character.id)}/${character.id}`}>
+        <Link href={`${CHARACTER}/${character.id}`}>
           <a>
             <Image
               src={character.image}

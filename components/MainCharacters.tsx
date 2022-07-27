@@ -10,7 +10,7 @@ const MainCharacters: FC<IMainCharactersProps> = ({ characters }) => {
     <div className={styles.container}>
       {characters.map((character) => (
         <Link
-          href={`${routesUrls.CHARACTER_MAIN}/${character.id}`}
+          href={`${routesUrls.CHARACTER}/${character.id}`}
           key={character.id}
         >
           <a className={styles.character}>

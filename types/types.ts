@@ -6,7 +6,7 @@ export interface IResponse<T> {
 }
 
 export interface IAllInfo {
-  count: number | null;
+  count: number;
   pages: number;
   next: string | null;
   prev: string | null;

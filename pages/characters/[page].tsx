@@ -1,18 +1,38 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import CharactersList from "components/CharactersList";
 import Pagination from "components/Pagination";
-import { ICharacter, IResponse } from "types/types";
 import { routesUrls } from "constants/routes";
+import { ICharacter, IResponse, IAllInfo } from "types/types";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/character`);
+
+  const {
+    info: { pages },
+  }: { info: IAllInfo } = await response.json();
+
+  let paths: { params: { page: string } }[] = [];
+
+  for (let i = 1; i <= pages; i++) {
+    paths = [...paths, { params: { page: i.toString() } }];
+  }
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch(
     `${process.env.BASE_URL}/character/?page=${context.params?.page}`
   );
 
   const data = await response.json();
 
-  if (!data) {
+  if (!data?.results) {
     return {
       notFound: true,
     };
@@ -23,11 +43,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const Characters: NextPage<IResponse<ICharacter>> = ({ results, info }) => (
-  <Layout title="Characters">
-    <CharactersList characters={results} />
-    <Pagination info={info} path={routesUrls.CHARACTERS} />
-  </Layout>
-);
+const Characters: NextPage<IResponse<ICharacter>> = ({ results, info }) => {
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <h1>Loading..................</h1>;
+  }
+
+  return (
+    <Layout title="Characters">
+      <CharactersList characters={results} />
+      <Pagination info={info} path={routesUrls.CHARACTERS} />
+    </Layout>
+  );
+};
 
 export default Characters;

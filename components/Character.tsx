@@ -13,7 +13,9 @@ const Character = ({ character }: ICharacterProps) => (
         alt={character.name}
       />
       <span
-        className={`${style.status} ${style[character.status.toLowerCase()]}`}
+        className={`${style?.status} ${
+          style[character?.status?.toLowerCase()]
+        }`}
       >
         {character.status}
       </span>

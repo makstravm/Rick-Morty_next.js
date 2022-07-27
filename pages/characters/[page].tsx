@@ -5,6 +5,7 @@ import CharactersList from "components/CharactersList";
 import Pagination from "components/Pagination";
 import { routesUrls } from "constants/routes";
 import { ICharacter, IResponse, IAllInfo } from "types/types";
+import Preloader from "components/Preloader";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`${process.env.BASE_URL}/character`);
@@ -47,7 +48,7 @@ const Characters: NextPage<IResponse<ICharacter>> = ({ results, info }) => {
   const { isFallback } = useRouter();
 
   if (isFallback) {
-    return <h1>Loading..................</h1>;
+    return <Preloader />;
   }
 
   return (

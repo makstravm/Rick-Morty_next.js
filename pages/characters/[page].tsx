@@ -1,14 +1,26 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import CharactersList from "components/CharactersList";
 import Pagination from "components/Pagination";
-import { ICharacter, IResponse } from "types/types";
 import { routesUrls } from "constants/routes";
-import { useRouter } from "next/router";
+import { ICharacter, IResponse, IAllInfo } from "types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/character`);
+
+  const {
+    info: { pages },
+  }: { info: IAllInfo } = await response.json();
+
+  let paths: { params: { page: string } }[] = [];
+
+  for (let i = 1; i <= pages; i++) {
+    paths = [...paths, { params: { page: i.toString() } }];
+  }
+
   return {
-    paths: [{ params: { page: "1" } }],
+    paths,
     fallback: true,
   };
 };

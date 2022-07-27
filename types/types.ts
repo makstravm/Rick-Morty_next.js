@@ -61,3 +61,7 @@ export interface IPageCharacterProps {
 export interface ICharacterProps {
   character: ICharacter;
 }
+
+export interface IPageErrorProps {
+  codeError: string;
+}

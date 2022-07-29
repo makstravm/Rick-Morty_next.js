@@ -20,7 +20,10 @@ const Header = () => {
         </Link>
         <div>
           {navigation.map(({ id, title, path }) => (
-            <Link key={id} href={`${path}/1`}>
+            <Link
+              key={id}
+              href={`${path === routesUrls.CHARACTERS ? path + "/1" : path}`}
+            >
               <a className={`link ${pathname === path ? "--active" : ""}`}>
                 {title}
               </a>

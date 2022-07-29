@@ -15,10 +15,9 @@ export interface IAllInfo {
 export interface IResponseEpisodesData {
   id: number;
   image: string;
-  title: string;
   season: string;
-  episodes: string;
 }
+
 export interface IEpisodesProps {
   episodes: IResponseEpisodesData[];
 }

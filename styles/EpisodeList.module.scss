@@ -1,0 +1,57 @@
+.episodeList {
+  h4 {
+    text-align: center;
+    font-size: 3.2rem;
+    line-height: 3.8rem;
+    padding: 25px 0;
+    font-family: "Plateia";
+    font-weight: 700;
+  }
+}
+.episodeBox {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  box-shadow: 0 1px 0 0 rgb(0, 255, 26);
+
+  margin-bottom: 15px;
+  border-radius: 15px;
+}
+
+.episodeNum {
+  text-align: center;
+  max-width: 150px;
+  width: 100%;
+  padding-right: 2vw;
+  font-family: "Plateia";
+  font-weight: 700;
+  font-size: 7rem;
+  letter-spacing: 6px;
+  line-height: 8rem;
+  color: transparent;
+  padding-bottom: 20px;
+  -webkit-text-stroke: 3px rgb(0, 255, 26);
+}
+
+.episodeDescription {
+  h5 {
+    font-size: 2rem;
+    line-height: 3.8rem;
+    color: #ececec;
+    span {
+      font-style: italic;
+      font-size: 3rem;
+      color: #fff;
+    }
+  }
+  p {
+    font-size: 1.4rem;
+    line-height: 3rem;
+    color: #ececec;
+    span {
+      font-style: italic;
+      font-size: 2rem;
+      color: #fff;
+    }
+  }
+}

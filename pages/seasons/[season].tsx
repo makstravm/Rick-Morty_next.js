@@ -8,6 +8,7 @@ import {
   IResponseEpisodeData,
   IResponseSeasonsData,
 } from "types/types";
+import EpisodeList from "components/EpisodeList";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`${process.env.API_URL}/seasons`);
@@ -42,9 +43,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const EpisodesOfSeason: NextPage<IEpisodesOfSeasonsProps> = ({ season }) => (
+const EpisodesOfSeason: NextPage<any> = ({ season }) => (
   <Layout title="Season">
-    <div>{season[0].name}</div>
+    <EpisodeList episodes={season} />
   </Layout>
 );
 

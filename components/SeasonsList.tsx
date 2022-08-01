@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { routesUrls } from "constants/routes";
 import { ISeasonsProps } from "types/types";
-import style from "styles/EpisodesList.module.scss";
+import style from "styles/SeasonsList.module.scss";
 
-const EpisodesList: FC<ISeasonsProps> = ({ seasons }) => (
+const SeasonList: FC<ISeasonsProps> = ({ seasons }) => (
   <div className={`container ${style.episodes}`}>
     {seasons.map(({ id, season, image }) => (
       <Link href={`${routesUrls.SEASONS}/${season}`} key={id}>
@@ -20,4 +20,4 @@ const EpisodesList: FC<ISeasonsProps> = ({ seasons }) => (
   </div>
 );
 
-export default EpisodesList;
+export default SeasonList;

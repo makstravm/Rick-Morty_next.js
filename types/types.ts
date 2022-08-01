@@ -27,7 +27,9 @@ export interface IResponseEpisodeData {
   url: string;
   created: string;
 }
-
+export interface IEpisodesListProps {
+  episodes: IResponseEpisodeData[];
+}
 export interface IEpisodesOfSeasonsProps {
   season: IResponseEpisodeData[];
 }

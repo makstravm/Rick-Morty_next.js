@@ -11,6 +11,33 @@ export interface IAllInfo {
   next: string | null;
   prev: string | null;
 }
+
+export interface IResponseSeasonsData {
+  id: number;
+  image: string;
+  season: string;
+}
+
+export interface IResponseEpisodeData {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string;
+}
+export interface IEpisodesListProps {
+  episodes: IResponseEpisodeData[];
+}
+export interface IEpisodesOfSeasonsProps {
+  season: IResponseEpisodeData[];
+}
+
+export interface ISeasonsProps {
+  seasons: IResponseSeasonsData[];
+}
+
 export interface ICharacter {
   id: number;
   name: string;

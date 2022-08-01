@@ -12,14 +12,14 @@ export interface IAllInfo {
   prev: string | null;
 }
 
-export interface IResponseEpisodesData {
+export interface IResponseSeasonsData {
   id: number;
   image: string;
   season: string;
 }
 
-export interface IEpisodesProps {
-  episodes: IResponseEpisodesData[];
+export interface ISeasonsProps {
+  seasons: IResponseSeasonsData[];
 }
 
 export interface ICharacter {

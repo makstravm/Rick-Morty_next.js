@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
-import EpisodesList from "components/EpisodesList";
-import { IEpisodesProps } from "types/types";
+import SeasonsList from "components/SeasonsList";
+import { ISeasonsProps } from "types/types";
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 
     return {
-      props: { episodes: data },
+      props: { seasons: data },
       revalidate: 20,
     };
   } catch (error) {
@@ -26,10 +26,10 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 };
 
-const Episodes: NextPage<IEpisodesProps> = ({ episodes }) => (
-  <Layout title="Episodes">
-    <EpisodesList episodes={episodes} />
+const Seasons: NextPage<ISeasonsProps> = ({ seasons }) => (
+  <Layout title="Seasons">
+    <SeasonsList seasons={seasons} />
   </Layout>
 );
 
-export default Episodes;
+export default Seasons;

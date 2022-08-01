@@ -18,6 +18,20 @@ export interface IResponseSeasonsData {
   season: string;
 }
 
+export interface IResponseEpisodeData {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string;
+}
+
+export interface IEpisodesOfSeasonsProps {
+  season: IResponseEpisodeData[];
+}
+
 export interface ISeasonsProps {
   seasons: IResponseSeasonsData[];
 }

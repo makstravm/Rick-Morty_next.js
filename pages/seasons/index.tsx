@@ -5,7 +5,7 @@ import { ISeasonsProps } from "types/types";
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response = await fetch(`${process.env.API_URL}/episodes`);
+    const response = await fetch(`${process.env.API_URL}/seasons`);
 
     const data = await response.json();
 

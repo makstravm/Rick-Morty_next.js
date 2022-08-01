@@ -2,7 +2,12 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
 
-import { IEpisodesOfSeasonsProps, IResponseSeasonsData } from "types/types";
+import {
+  IEpisodesOfSeasonsProps,
+  IResponse,
+  IResponseEpisodeData,
+  IResponseSeasonsData,
+} from "types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`${process.env.API_URL}/seasons`);
@@ -24,9 +29,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${process.env.BASE_URL}/episode/?episode=${context.params?.season}`
   );
 
-  const data = await response.json();
+  const data: IResponse<IResponseEpisodeData> = await response.json();
 
-  if (!data) {
+  if (!data?.results) {
     return {
       notFound: true,
     };
@@ -36,9 +41,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: { season: data.results },
   };
 };
+
 const EpisodesOfSeason: NextPage<IEpisodesOfSeasonsProps> = ({ season }) => (
   <Layout title="Season">
-    <div></div>
+    <div>{season[0].name}</div>
   </Layout>
 );
 

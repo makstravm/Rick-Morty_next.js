@@ -3,14 +3,21 @@ import type { GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
 import MainCharacters from "components/MainCharacters";
 
+import { qgl } from "helpers/gql";
+
 import { IHomeProps } from "types/types";
 
 import style from "../styles/Home.module.scss";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/character/1,2`);
-
-  const data = await response.json();
+  const { data } = await qgl(
+    `query ($id:[ID!]!){
+      charactersByIds(ids:$id) {
+      id name image
+      }
+    }`,
+    { id: [1, 2] }
+  );
 
   if (!data) {
     return {
@@ -19,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
-    props: { characters: data },
+    props: { characters: data.charactersByIds },
   };
 };
 

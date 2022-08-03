@@ -4,15 +4,27 @@ import Layout from "components/Layout";
 import CharactersList from "components/CharactersList";
 import Pagination from "components/Pagination";
 import { routesUrls } from "constants/routes";
-import { ICharacter, IResponse, IAllInfo } from "types/types";
+import { ICharacter, IResponse } from "types/types";
 import Preloader from "components/Preloader";
+import { gql } from "helpers/gql";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/character`);
-
   const {
-    info: { pages },
-  }: { info: IAllInfo } = await response.json();
+    data: {
+      characters: {
+        info: { pages },
+      },
+    },
+  } = await gql(
+    `query {
+      characters {
+        info {
+          pages
+        }
+      }
+    }`,
+    {}
+  );
 
   let paths: { params: { page: string } }[] = [];
 
@@ -27,20 +39,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const response = await fetch(
-    `${process.env.BASE_URL}/character/?page=${context.params?.page}`
+  const { data } = await gql(
+    `query($page: Int) {
+      characters(page: $page) {
+        info {
+          pages
+          next
+          prev
+        }
+        results {
+          id
+          name
+          image
+        }
+      }
+    }`,
+    { page: Number(context.params?.page) }
   );
 
-  const data = await response.json();
-
-  if (!data?.results) {
+  if (!data) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: data,
+    props: data.characters,
   };
 };
 

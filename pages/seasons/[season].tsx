@@ -2,13 +2,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
 
-import {
-  IEpisodesOfSeasonsProps,
-  IResponse,
-  IResponseEpisodeData,
-  IResponseSeasonsData,
-} from "types/types";
+import { IResponseSeasonsData } from "types/types";
 import EpisodeList from "components/EpisodeList";
+import { gql } from "helpers/gql";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`${process.env.API_URL}/seasons`);
@@ -26,20 +22,35 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const response = await fetch(
-    `${process.env.BASE_URL}/episode/?episode=${context.params?.season}`
+  const {
+    data: {
+      episodes: { results },
+    },
+  } = await gql(
+    `query ($filter:FilterEpisode ) {
+      episodes(filter:$filter) {
+        results {
+          id
+          name 
+          air_date
+          characters {
+            id
+          } 
+          episode
+        }
+      }
+    }`,
+    { filter: { episode: context.params?.season } }
   );
 
-  const data: IResponse<IResponseEpisodeData> = await response.json();
-
-  if (!data?.results) {
+  if (!results) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: { season: data.results },
+    props: { season: results },
   };
 };
 

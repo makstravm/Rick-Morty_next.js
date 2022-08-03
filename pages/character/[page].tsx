@@ -3,14 +3,26 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
 import Character from "components/Character";
 
-import { IAllInfo, IPageCharacterProps } from "types/types";
+import { IPageCharacterProps } from "types/types";
+import { gql } from "helpers/gql";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/character`);
-
   const {
-    info: { count },
-  }: { info: IAllInfo } = await response.json();
+    data: {
+      characters: {
+        info: { count },
+      },
+    },
+  } = await gql(
+    `query {
+      characters {
+        info {
+          count
+        }
+      }
+    }`,
+    {}
+  );
 
   let paths: { params: { page: string } }[] = [];
 
@@ -25,11 +37,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const response = await fetch(
-    `${process.env.BASE_URL}/character/${context.params?.page}`
+  const { data } = await gql(
+    `query($id: ID!) {
+      character(id: $id) {
+        id
+        image
+        name
+        status
+        species
+        gender
+        created
+        origin {
+          id
+          name
+        }
+        location {
+          id
+          name
+        }
+        episode { id name episode}
+      }
+    }
+  `,
+    { id: context.params?.page }
   );
-
-  const data = await response.json();
 
   if (!data) {
     return {
@@ -38,9 +69,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-    props: { character: data },
+    props: { character: data.character },
   };
 };
+
 const CharacterPage: NextPage<IPageCharacterProps> = ({ character }) => (
   <Layout title={character.name}>
     <Character character={character} />

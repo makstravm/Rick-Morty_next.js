@@ -3,15 +3,26 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
 import Character from "components/Character";
 
-import { IAllInfo, IPageCharacterProps } from "types/types";
-import { qgl } from "helpers/gql";
+import { IPageCharacterProps } from "types/types";
+import { gql } from "helpers/gql";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/character`);
-
   const {
-    info: { count },
-  }: { info: IAllInfo } = await response.json();
+    data: {
+      characters: {
+        info: { count },
+      },
+    },
+  } = await gql(
+    `query {
+      characters {
+        info {
+          count
+        }
+      }
+    }`,
+    {}
+  );
 
   let paths: { params: { page: string } }[] = [];
 
@@ -26,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { data } = await qgl(
+  const { data } = await gql(
     `query($id: ID!) {
       character(id: $id) {
         id

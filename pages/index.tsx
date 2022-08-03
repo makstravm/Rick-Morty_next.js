@@ -3,14 +3,14 @@ import type { GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
 import MainCharacters from "components/MainCharacters";
 
-import { qgl } from "helpers/gql";
+import { gql } from "helpers/gql";
 
 import { IHomeProps } from "types/types";
 
 import style from "../styles/Home.module.scss";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await qgl(
+  const { data } = await gql(
     `query ($id:[ID!]!){
       charactersByIds(ids:$id) {
       id name image

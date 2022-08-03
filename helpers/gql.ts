@@ -14,4 +14,4 @@ const getGQL =
     return data;
   };
 
-export const qgl = getGQL(`${process.env.GQL_API}/graphql`);
+export const gql = getGQL(`${process.env.GQL_API}/graphql`);

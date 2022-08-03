@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 import CharactersList from "components/CharactersList";
 import Pagination from "components/Pagination";
 import { routesUrls } from "constants/routes";
-import { ICharacter, IResponse } from "types/types";
+import { ICharactersProps } from "types/types";
 import Preloader from "components/Preloader";
 import { gql } from "helpers/gql";
 
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Characters: NextPage<IResponse<ICharacter>> = ({ results, info }) => {
+const Characters: NextPage<ICharactersProps> = ({ results, info }) => {
   const { isFallback } = useRouter();
 
   if (isFallback) {

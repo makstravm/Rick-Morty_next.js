@@ -23,19 +23,7 @@ export interface IResponseEpisodeData {
   name: string;
   air_date: string;
   episode: string;
-  characters: string[];
-  url: string;
-  created: string;
-}
-export interface IEpisodesListProps {
-  episodes: IResponseEpisodeData[];
-}
-export interface IEpisodesOfSeasonsProps {
-  season: IResponseEpisodeData[];
-}
-
-export interface ISeasonsProps {
-  seasons: IResponseSeasonsData[];
+  characters: { id: string }[];
 }
 
 export interface ICharacter {
@@ -43,7 +31,6 @@ export interface ICharacter {
   name: string;
   status: string;
   species: string;
-  type: string;
   gender: string;
   image: string;
   created: string;
@@ -59,26 +46,31 @@ export interface ICharacter {
   url: string;
 }
 
-export interface IHomeProps {
-  characters: ICharacter[];
-}
-
 export interface ILayoutProps {
   children: ReactNode;
   title: string;
 }
 
-export interface IMainCharactersProps {
-  characters: ICharacter[];
+export interface IHomeProps {
+  characters: Pick<ICharacter, "id" | "name" | "image">[];
 }
 
-export interface IPaginationProps {
-  info: IAllInfo;
-  path: string;
+export interface IMainCharactersProps {
+  characters: Pick<ICharacter, "id" | "name" | "image">[];
+}
+
+export interface ICharactersProps {
+  info: Omit<IAllInfo, "count">;
+  results: Pick<ICharacter, "id" | "name" | "image">[];
 }
 
 export interface ICharactersListProps {
-  characters: ICharacter[];
+  characters: Pick<ICharacter, "id" | "name" | "image">[];
+}
+
+export interface IPaginationProps {
+  info: Omit<IAllInfo, "count">;
+  path: string;
 }
 
 export interface IPageCharacterProps {
@@ -91,4 +83,15 @@ export interface ICharacterProps {
 
 export interface IPageErrorProps {
   codeError: string;
+}
+
+export interface IEpisodesListProps {
+  episodes: IResponseEpisodeData[];
+}
+export interface IEpisodesOfSeasonsProps {
+  season: IResponseEpisodeData[];
+}
+
+export interface ISeasonsProps {
+  seasons: IResponseSeasonsData[];
 }

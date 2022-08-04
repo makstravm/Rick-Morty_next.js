@@ -6,9 +6,9 @@ import { ISeasonsProps } from "types/types";
 import style from "styles/SeasonsList.module.scss";
 
 const SeasonList: FC<ISeasonsProps> = ({ seasons }) => (
-  <div className={`container ${style.episodes}`}>
+  <section className={`container ${style.episodes}`}>
     {seasons.map(({ id, season, image }) => (
-      <Link href={`${routesUrls.SEASONS}/${season}`} key={id}>
+      <Link href={`${routesUrls.SEASONS}/${season.toLowerCase()}`} key={id}>
         <a className={style.link}>
           <div className={style.imgBox}>
             <Image src={image} alt={season} width={275} height={315} priority />
@@ -17,7 +17,7 @@ const SeasonList: FC<ISeasonsProps> = ({ seasons }) => (
         </a>
       </Link>
     ))}
-  </div>
+  </section>
 );
 
 export default SeasonList;

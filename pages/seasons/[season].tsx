@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const EpisodesOfSeason: NextPage<IEpisodesOfSeasonsProps> = ({ season }) => (
-  <Layout title="Season">
+  <Layout title={`Season ${season?.[0].episode.slice(1, 3)}`}>
     <EpisodeList episodes={season} />
   </Layout>
 );

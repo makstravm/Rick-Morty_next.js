@@ -12,7 +12,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data: IResponseSeasonsData[] = await response.json();
 
   const paths = data.map(({ season }) => ({
-    params: { season: season.toUpperCase() },
+    params: { season: season.toLowerCase() },
   }));
 
   return {
@@ -31,11 +31,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       episodes(filter:$filter) {
         results {
           id
-          name 
+          name
           air_date
-          characters {
-            id
-          } 
           episode
         }
       }

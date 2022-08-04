@@ -18,12 +18,12 @@ export interface IResponseSeasonsData {
   season: string;
 }
 
-export interface IResponseEpisodeData {
+export interface IEpisodeData {
   id: number;
   name: string;
   air_date: string;
   episode: string;
-  characters: { id: string }[];
+  characters: Pick<ICharacter, "id" | "name">[];
 }
 
 export interface ICharacter {
@@ -86,10 +86,15 @@ export interface IPageErrorProps {
 }
 
 export interface IEpisodesListProps {
-  episodes: IResponseEpisodeData[];
+  episodes: Pick<IEpisodeData, "id" | "name" | "episode">[];
 }
+
 export interface IEpisodesOfSeasonsProps {
-  season: IResponseEpisodeData[];
+  season: Pick<IEpisodeData, "id" | "name" | "episode">[];
+}
+
+export interface IEpisodePageProps {
+  episodeData: IEpisodeData;
 }
 
 export interface ISeasonsProps {

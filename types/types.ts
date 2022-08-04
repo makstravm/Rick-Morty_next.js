@@ -97,6 +97,10 @@ export interface IEpisodePageProps {
   episodeData: IEpisodeData;
 }
 
+export interface IEpisodeProps {
+  episodeOne: IEpisodeData;
+}
+
 export interface ISeasonsProps {
   seasons: IResponseSeasonsData[];
 }

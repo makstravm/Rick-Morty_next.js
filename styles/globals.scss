@@ -22,6 +22,7 @@ main {
   padding-top: 85px;
   flex-grow: 1;
 }
+
 h4 {
   text-align: center;
   font-size: 3.2rem;
@@ -30,6 +31,12 @@ h4 {
   font-family: "Plateia";
   font-weight: 700;
 }
+
+h6 {
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
 header {
   position: fixed;
   top: 0;

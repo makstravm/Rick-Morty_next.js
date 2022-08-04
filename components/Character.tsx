@@ -4,7 +4,7 @@ import { ICharacterProps } from "types/types";
 import style from "../styles/Character.module.scss";
 
 const Character = ({ character }: ICharacterProps) => (
-  <div className={`${style.character} container`}>
+  <section className={`${style.character} container`}>
     <div className={style.boxImg}>
       <Image
         width={250}
@@ -61,7 +61,7 @@ const Character = ({ character }: ICharacterProps) => (
         )}
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default Character;

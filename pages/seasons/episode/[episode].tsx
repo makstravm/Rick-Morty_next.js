@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
+import Episode from "components/Episode";
 import Layout from "components/Layout";
 
 import { gql } from "helpers/gql";
@@ -65,7 +66,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const EpisodePage: NextPage<IEpisodePageProps> = ({ episodeData }) => (
   <Layout title={episodeData.episode}>
-    <div></div>
+    <Episode episodeOne={episodeData} />
   </Layout>
 );
 

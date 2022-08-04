@@ -8,7 +8,7 @@ import { ICharactersListProps } from "types/types";
 const { CHARACTER } = routesUrls;
 
 const CharactersList: FC<ICharactersListProps> = ({ characters }) => (
-  <div className="container characters-list">
+  <section className="container characters-list">
     {characters.map((character) => (
       <div className="characters-list__item" key={character.id}>
         <Link href={`${CHARACTER}/${character.id}`}>
@@ -24,7 +24,7 @@ const CharactersList: FC<ICharactersListProps> = ({ characters }) => (
         </Link>
       </div>
     ))}
-  </div>
+  </section>
 );
 
 export default CharactersList;

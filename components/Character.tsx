@@ -1,3 +1,4 @@
+import { routesUrls } from "constants/routes";
 import Image from "next/image";
 import Link from "next/link";
 import { ICharacterProps } from "types/types";
@@ -20,46 +21,55 @@ const Character = ({ character }: ICharacterProps) => (
         {character.status}
       </span>
     </div>
-    <div className={style.description}>
+    <div className={`${style.description} description`}>
       <div>
         <h3>{character.name}</h3>
       </div>
-      <div>
-        <span>Gender:</span>
-        <span>{character.gender}</span>
-      </div>
-      <div>
-        <span>Species:</span>
-        <span>{character.species}</span>
-      </div>
-      <div>
-        <span>Created:</span>
+      <p>
+        Gender<span>{character.gender}</span>
+      </p>
+      <p>
+        Species<span>{character.species}</span>
+      </p>
+      <p>
+        Created
         <span>{new Date(character.created).toLocaleDateString()}</span>
-      </div>
-      <div>
-        <span>Episodes:</span>
-        <span>{character.episode.length}</span>
-      </div>
-      <div>
-        <span>Origin:</span>
-        {character?.origin?.url ? (
-          <Link href={character.origin.url}>
+      </p>
+      <p>
+        Origin
+        {character?.origin?.id ? (
+          <Link href={character.origin.id}>
             <a>{character.origin.name}</a>
           </Link>
         ) : (
           <span>---</span>
         )}
-      </div>
-      <div>
-        <span>Location:</span>
-        {character?.location?.url ? (
-          <Link href={character.location.url}>
+      </p>
+      <p>
+        Location
+        {character?.location?.id ? (
+          <Link href={character.location.id}>
             <a>{character.location.name}</a>
           </Link>
         ) : (
           <span>---</span>
         )}
-      </div>
+      </p>
+      <details>
+        <summary>
+          Episodes <span>{`( ${character.episode.length} )`}</span>
+        </summary>
+        <div>
+          {character.episode.map(({ id, name }) => (
+            <Link key={id} href={routesUrls.EPISODE + "/" + id}>
+              <a>
+                {name}
+                <span>,</span>
+              </a>
+            </Link>
+          ))}
+        </div>
+      </details>
     </div>
   </section>
 );

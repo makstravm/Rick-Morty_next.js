@@ -36,14 +36,13 @@ export interface ICharacter {
   created: string;
   location: {
     name: string;
-    url: string;
+    id: string;
   };
   origin: {
     name: string;
-    url: string;
+    id: string;
   };
-  episode: string[];
-  url: string;
+  episode: Pick<IEpisodeData, "id" | "name">[];
 }
 
 export interface ILayoutProps {

@@ -3,6 +3,7 @@ export enum routesUrls {
   CHARACTERS = "/characters",
   CHARACTER = "/character",
   LOCATIONS = "/locations",
+  LOCATION = "/location",
   SEASONS = "/seasons",
   EPISODE = "/seasons/episode",
 }

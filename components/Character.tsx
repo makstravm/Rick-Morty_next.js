@@ -32,13 +32,9 @@ const Character = ({ character }: ICharacterProps) => (
         Species<span>{character.species}</span>
       </p>
       <p>
-        Created
-        <span>{new Date(character.created).toLocaleDateString()}</span>
-      </p>
-      <p>
         Origin
         {character?.origin?.id ? (
-          <Link href={character.origin.id}>
+          <Link href={routesUrls.LOCATION + "/" + character.location.id}>
             <a>{character.origin.name}</a>
           </Link>
         ) : (
@@ -48,7 +44,7 @@ const Character = ({ character }: ICharacterProps) => (
       <p>
         Location
         {character?.location?.id ? (
-          <Link href={character.location.id}>
+          <Link href={routesUrls.LOCATION + "/" + character.location.id}>
             <a>{character.location.name}</a>
           </Link>
         ) : (
@@ -64,7 +60,7 @@ const Character = ({ character }: ICharacterProps) => (
             <Link key={id} href={routesUrls.EPISODE + "/" + id}>
               <a>
                 {name}
-                <span>,</span>
+                <span>,&nbsp;</span>
               </a>
             </Link>
           ))}

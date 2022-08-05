@@ -1,21 +1,21 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
-import Character from "components/Character";
 
-import { IPageCharacterProps } from "types/types";
 import { gql } from "helpers/gql";
+import { ILocationPageProps } from "types/types";
+import Location from "components/Location";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {
     data: {
-      characters: {
+      locations: {
         info: { count },
       },
     },
   } = await gql(
     `query {
-      characters {
+      locations {
         info {
           count
         }
@@ -39,25 +39,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { data } = await gql(
     `query($id: ID!) {
-      character(id: $id) {
+      location(id: $id) {
         id
-        image
         name
-        status
-        species
-        gender
-        origin {
+        created
+        type
+        dimension
+        residents {
           id
           name
         }
-        location {
-          id
-          name
-        }
-        episode { id name episode}
       }
-    }
-  `,
+    }`,
     { id: context.params?.page }
   );
 
@@ -68,14 +61,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-    props: { character: data.character },
+    props: { location: data.location },
   };
 };
 
-const CharacterPage: NextPage<IPageCharacterProps> = ({ character }) => (
-  <Layout title={character.name}>
-    <Character character={character} />
+const LocationPage: NextPage<ILocationPageProps> = ({ location }) => (
+  <Layout title={location.name}>
+    <Location locationOne={location} />
   </Layout>
 );
 
-export default CharacterPage;
+export default LocationPage;

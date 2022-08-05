@@ -1,11 +1,16 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
+
+import { routesUrls } from "constants/routes";
+
 import Layout from "components/Layout";
 import Pagination from "components/Pagination";
-import { routesUrls } from "constants/routes";
-import { ILocationsPageProps } from "types/types";
 import Preloader from "components/Preloader";
+import LocationsList from "components/LocationsList";
+
 import { gql } from "helpers/gql";
+
+import { ILocationsPageProps } from "types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {
@@ -75,6 +80,7 @@ const LocationsPage: NextPage<ILocationsPageProps> = ({ results, info }) => {
 
   return (
     <Layout title="Locations">
+      <LocationsList locations={results} />
       <Pagination info={info} path={routesUrls.LOCATIONS} />
     </Layout>
   );

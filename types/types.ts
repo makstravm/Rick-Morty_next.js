@@ -33,19 +33,17 @@ export interface ICharacter {
   species: string;
   gender: string;
   image: string;
-  created: string;
-  location: Pick<ILocations, "id" | "name">;
-  origin: Pick<ILocations, "id" | "name">;
+  location: Pick<ILocation, "id" | "name">;
+  origin: Pick<ILocation, "id" | "name">;
   episode: Pick<IEpisodeData, "id" | "name">[];
 }
 
-export interface ILocations {
-  id: string;
-  name: String;
-  type: String;
-  dimension: String;
+export interface ILocation {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
   residents: Pick<ICharacter, "id" | "name">[];
-  created: String;
 }
 
 export interface ILayoutProps {
@@ -102,12 +100,23 @@ export interface IEpisodePageProps {
 export interface IEpisodeProps {
   episodeOne: IEpisodeData;
 }
-screenLeft;
 export interface ISeasonsProps {
   seasons: IResponseSeasonsData[];
 }
 
 export interface ILocationsPageProps {
   info: Omit<IAllInfo, "count">;
-  results: Pick<ILocations, "id" | "name">[];
+  results: Pick<ILocation, "id" | "name">[];
+}
+
+export interface ILocationsListProps {
+  locations: Pick<ILocation, "id" | "name">[];
+}
+
+export interface ILocationPageProps {
+  location: ILocation;
+}
+
+export interface ILocationProps {
+  locationOne: ILocation;
 }

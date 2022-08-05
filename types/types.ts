@@ -34,15 +34,18 @@ export interface ICharacter {
   gender: string;
   image: string;
   created: string;
-  location: {
-    name: string;
-    id: string;
-  };
-  origin: {
-    name: string;
-    id: string;
-  };
+  location: Pick<ILocations, "id" | "name">;
+  origin: Pick<ILocations, "id" | "name">;
   episode: Pick<IEpisodeData, "id" | "name">[];
+}
+
+export interface ILocations {
+  id: string;
+  name: String;
+  type: String;
+  dimension: String;
+  residents: Pick<ICharacter, "id" | "name">[];
+  created: String;
 }
 
 export interface ILayoutProps {
@@ -99,7 +102,12 @@ export interface IEpisodePageProps {
 export interface IEpisodeProps {
   episodeOne: IEpisodeData;
 }
-
+screenLeft;
 export interface ISeasonsProps {
   seasons: IResponseSeasonsData[];
+}
+
+export interface ILocationsPageProps {
+  info: Omit<IAllInfo, "count">;
+  results: Pick<ILocations, "id" | "name">[];
 }

@@ -64,7 +64,7 @@ const Character = ({ character }: ICharacterProps) => (
             <Link key={id} href={routesUrls.EPISODE + "/" + id}>
               <a>
                 {name}
-                <span>,</span>
+                <span>,&nbsp;</span>
               </a>
             </Link>
           ))}

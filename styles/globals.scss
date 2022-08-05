@@ -175,6 +175,83 @@ ul.pagination {
   }
 }
 
+.description {
+  h6,
+  p,
+  summary {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    line-height: 2.4rem;
+    font-style: italic;
+    color: #ececec;
+    span {
+      color: #ffffff;
+      font-style: normal;
+      font-weight: 700;
+      padding-left: 2vw;
+      letter-spacing: 2px;
+    }
+  }
+  h6 {
+    span {
+      font-size: 2.6rem;
+      line-height: 3rem;
+    }
+  }
+  p {
+    span {
+      font-size: 2.2rem;
+      line-height: 2.8rem;
+    }
+  }
+  summary {
+    cursor: pointer;
+  }
+  a {
+    color: #fff;
+    padding-left: 2vw;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 2.8rem;
+    transition: all 0.3s;
+    &:hover {
+      color: #3cf43e;
+      text-shadow: 0 0 16px #00ff04;
+    }
+  }
+  details {
+    display: inline-block;
+    a {
+      letter-spacing: 1px;
+      font-size: 1.8rem;
+      padding-left: 0;
+      font-weight: 400;
+      line-height: 2.6rem;
+      transition: all 0.3s;
+      &:last-child {
+        span {
+          display: none;
+        }
+      }
+    }
+    &[open] {
+      summary {
+        &::marker {
+          color: rgb(0, 255, 26);
+        }
+      }
+      div {
+        padding-left: 20px;
+      }
+    }
+  }
+  summary {
+    cursor: pointer;
+  }
+}
+
 .page-404 {
   height: 100%;
   .page {
@@ -271,6 +348,7 @@ ul.pagination {
     }
   }
 }
+
 .preloader {
   position: fixed;
   width: 100%;

@@ -1,27 +1,6 @@
 import Head from "next/head";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { loginValidationSchema } from "helpers/schema/loginSchema";
-import { useForm } from "react-hook-form";
-
-interface MyForm {
-  email: string;
-  password: string;
-}
 
 export const LogIn = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<MyForm>({
-    mode: "onChange",
-    resolver: yupResolver(loginValidationSchema),
-  });
-
-  const submitForm = (data: MyForm) => {
-    return data;
-  };
-
   return (
     <>
       <Head>
@@ -35,13 +14,7 @@ export const LogIn = () => {
         />
         <style data-href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" />
       </Head>
-      <div className="login">
-        <form onSubmit={handleSubmit(submitForm)}>
-          <input {...register("email")} name="email" />
-          <input {...register("password")} name="password" type="password" />
-          <button type="submit">Register</button>
-        </form>
-      </div>
+      <div className="login"></div>
     </>
   );
 };

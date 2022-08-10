@@ -27,7 +27,7 @@ export default NextAuth({
           return user;
         }
 
-        return null;
+        throw new Error(user);
       },
     }),
   ],

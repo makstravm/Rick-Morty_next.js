@@ -2,6 +2,7 @@ import Head from "next/head";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidationSchema } from "helpers/schema/loginSchema";
 import { useForm } from "react-hook-form";
+import style from "../styles/Login.module.scss";
 
 interface MyForm {
   email: string;
@@ -35,12 +36,22 @@ export const LogIn = () => {
         />
         <style data-href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" />
       </Head>
-      <div className="login">
-        <form onSubmit={handleSubmit(submitForm)}>
-          <input {...register("email")} name="email" />
-          <input {...register("password")} name="password" type="password" />
-          <button type="submit">Register</button>
-        </form>
+      <div className={style.login}>
+        <div className={style.main}>
+          <form onSubmit={handleSubmit(submitForm)}>
+            <label htmlFor="chk" aria-hidden="true">
+              Login
+            </label>
+            <input {...register("email")} name="email" placeholder="email" />
+            <input
+              {...register("password")}
+              name="password"
+              type="password"
+              placeholder="password"
+            />
+            <button type="submit">Log In</button>
+          </form>
+        </div>
       </div>
     </>
   );

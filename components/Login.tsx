@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 import { loginValidationSchema } from "helpers/schema/loginSchema";
 
@@ -22,7 +24,16 @@ export const LogIn = () => {
     resolver: yupResolver(loginValidationSchema),
   });
 
-  const submitForm = (data: MyForm) => data;
+  const router = useRouter();
+
+  const submitForm = (data: MyForm) =>
+    signIn("credentials", { ...data, redirect: false }).then((res) => {
+      if (res?.ok) {
+        router.back();
+      } else {
+        return res?.error;
+      }
+    });
 
   return (
     <>

@@ -6,12 +6,8 @@ export default NextAuth({
     CredentialProvider({
       name: "Credentials",
       credentials: {
-        email: {
-          email: "Username",
-          type: "email",
-          placeholder: "example@email.com",
-        },
-        password: { label: "Password", type: "password" },
+        email: {},
+        password: {},
       },
       authorize: async (credentials) => {
         const response = await fetch(`${process.env.API_URL}/login`, {
@@ -49,12 +45,5 @@ export default NextAuth({
 
       return session;
     },
-  },
-
-  pages: {
-    signOut: "/auth/signout",
-    error: "/auth/error",
-    verifyRequest: "/auth/verify-request",
-    newUser: "/auth/new-user",
   },
 });

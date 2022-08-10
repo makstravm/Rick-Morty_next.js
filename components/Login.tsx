@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -26,12 +27,14 @@ export const LogIn = () => {
 
   const router = useRouter();
 
+  const [resError, setResError] = useState<string | undefined>("");
+
   const submitForm = (data: MyForm) =>
     signIn("credentials", { ...data, redirect: false }).then((res) => {
       if (res?.ok) {
         router.back();
       } else {
-        return res?.error;
+        setResError(res?.error);
       }
     });
 
@@ -50,10 +53,14 @@ export const LogIn = () => {
       </Head>
       <div className={style.login}>
         <div className={style.main}>
-          <form onSubmit={handleSubmit(submitForm)}>
+          <form
+            onSubmit={handleSubmit(submitForm)}
+            className={resError && style.formError}
+          >
             <label htmlFor="chk" aria-hidden="true">
               Login
             </label>
+            {resError && <div className={style.resError}>{resError}</div>}
             <div
               className={
                 (errors.email && touchedFields.email && style.errors) || ""

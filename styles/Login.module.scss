@@ -37,6 +37,9 @@
     align-items: center;
     flex-direction: column;
     padding-bottom: 0px;
+    &.formError {
+      background: #ffeeee;
+    }
   }
   input {
     width: 60%;
@@ -83,7 +86,21 @@
     cursor: pointer;
     transition: 0.5s ease-in-out;
   }
+  .resError {
+    width: 60%;
+    font-size: 1.4em;
+    line-height: normal;
+    color: #851818;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #851818;
+    box-shadow: 0 0 10px 0px #c68e8e;
+    background-color: #fdcece;
+    margin-bottom: 15px;
+    border-radius: 15px;
+  }
 }
+
 .errors {
   input {
     border: 1px solid #851818;

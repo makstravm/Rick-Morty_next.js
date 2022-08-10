@@ -6,4 +6,5 @@ export enum routesUrls {
   LOCATION = "/location",
   SEASONS = "/seasons",
   EPISODE = "/seasons/episode",
+  REGISTRATION = "/registration",
 }

@@ -6,6 +6,7 @@ import { routesUrls } from "constants/routes";
 import { navigation } from "constants/navigation";
 
 import logo from "public/logo.png";
+import UserPanel from "./UserPanel";
 
 const Header = () => {
   const { pathname } = useRouter();
@@ -33,6 +34,7 @@ const Header = () => {
               </a>
             </Link>
           ))}
+          <UserPanel />
         </div>
       </nav>
     </header>

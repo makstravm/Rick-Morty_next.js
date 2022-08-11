@@ -55,6 +55,8 @@ header {
   }
   div {
     display: flex;
+    align-items: center;
+    padding: 15px 0;
   }
 
   .link {
@@ -63,8 +65,8 @@ header {
     text-decoration: none;
     text-transform: uppercase;
     color: #fff;
-    font-size: 1.8em;
-    line-height: 3em;
+    font-size: 1.8rem;
+    line-height: 2rem;
     height: 100%;
     display: block;
     transition: all 0.3s;

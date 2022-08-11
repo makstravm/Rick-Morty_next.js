@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
-import Character from "components/Character";
+import Character from "components/main/Character";
 
 import { IPageCharacterProps } from "types/types";
 import { gql } from "helpers/gql";

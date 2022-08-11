@@ -1,3 +1,4 @@
+import { ICharacter } from "components/main/Character/types";
 import { ReactNode } from "react";
 
 export interface IResponse<T> {
@@ -24,18 +25,6 @@ export interface IEpisodeData {
   air_date: string;
   episode: string;
   characters: Pick<ICharacter, "id" | "name">[];
-}
-
-export interface ICharacter {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  gender: string;
-  image: string;
-  location: Pick<ILocation, "id" | "name">;
-  origin: Pick<ILocation, "id" | "name">;
-  episode: Pick<IEpisodeData, "id" | "name">[];
 }
 
 export interface ILocation {
@@ -74,10 +63,6 @@ export interface IPaginationProps {
 }
 
 export interface IPageCharacterProps {
-  character: ICharacter;
-}
-
-export interface ICharacterProps {
   character: ICharacter;
 }
 

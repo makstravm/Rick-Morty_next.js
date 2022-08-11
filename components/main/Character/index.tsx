@@ -1,8 +1,11 @@
-import { routesUrls } from "constants/routes";
 import Image from "next/image";
 import Link from "next/link";
-import { ICharacterProps } from "types/types";
-import style from "../styles/Character.module.scss";
+
+import { routesUrls } from "constants/routes";
+
+import { ICharacterProps } from "./types";
+
+import style from "./Character.module.scss";
 
 const Character = ({ character }: ICharacterProps) => (
   <section className={`${style.character} container`}>

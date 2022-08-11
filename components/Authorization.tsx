@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import Head from "next/head";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -7,19 +7,14 @@ import { useRouter } from "next/router";
 
 import { loginValidationSchema } from "helpers/schema/loginSchema";
 
-import style from "../styles/Login.module.scss";
+import style from "../styles/Authorization.module.scss";
 
-interface MyForm {
-  email: string;
-  password: string;
-}
-
-export const LogIn = () => {
+export const Authorization: FC<any> = ({ title, fieldsForm }) => {
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
-  } = useForm<MyForm>({
+  } = useForm<Record<string, string>>({
     mode: "all",
     defaultValues: {},
     resolver: yupResolver(loginValidationSchema),
@@ -29,7 +24,7 @@ export const LogIn = () => {
 
   const [resError, setResError] = useState<string | undefined>("");
 
-  const submitForm = (data: MyForm) =>
+  const submitForm = (data: any) =>
     signIn("credentials", { ...data, redirect: false }).then((res) => {
       if (res?.ok) {
         router.back();
@@ -57,37 +52,28 @@ export const LogIn = () => {
             onSubmit={handleSubmit(submitForm)}
             className={resError && style.formError}
           >
-            <label htmlFor="chk" aria-hidden="true">
-              Login
-            </label>
+            <h2>{title}</h2>
             {resError && <div className={style.resError}>{resError}</div>}
-            <div
-              className={
-                (errors.email && touchedFields.email && style.errors) || ""
-              }
-            >
-              <input {...register("email")} name="email" placeholder="email" />
-              {errors.email && touchedFields.email && (
-                <span>{errors.email.message}</span>
-              )}
-            </div>
-            <div
-              className={
-                (errors.password && touchedFields.password && style.errors) ||
-                ""
-              }
-            >
-              <input
-                {...register("password")}
-                name="password"
-                type="password"
-                placeholder="password"
-              />
-              {errors.password && touchedFields.password && (
-                <span>{errors.password?.message}</span>
-              )}
-            </div>
-            <button type="submit">Log In</button>
+            {fieldsForm.map(({ id, name, type }: any) => (
+              <div
+                className={
+                  (errors[name] && touchedFields[name] && style.errors) || ""
+                }
+                key={id}
+              >
+                <input
+                  {...register(name)}
+                  name={name}
+                  placeholder={name}
+                  type={type}
+                />
+                {errors[name]?.message && touchedFields[name] && (
+                  <span>{errors[name]?.message}</span>
+                )}
+              </div>
+            ))}
+
+            <button type="submit">{title}</button>
           </form>
         </div>
       </div>

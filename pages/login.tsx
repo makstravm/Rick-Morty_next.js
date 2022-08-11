@@ -1,7 +1,8 @@
-import { LogIn } from "components/Login";
+import { Authorization } from "components/Authorization";
+import { loginFormFields } from "constants/form/loginFormsFields";
 
 const LogInPage = () => {
-  return <LogIn />;
+  return <Authorization title="Sign In" fieldsForm={loginFormFields} />;
 };
 
 export default LogInPage;

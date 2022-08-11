@@ -1,14 +1,16 @@
 import { useState, FC } from "react";
 import Head from "next/head";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { routesUrls } from "constants/routes";
+
+import { IAuthorizationProps } from "./types";
 
 import style from "../styles/Authorization.module.scss";
-import Link from "next/link";
-import { routesUrls } from "constants/routes";
-import { IAuthorizationProps } from "types/types";
 
 const { LOGIN, REGISTRATION } = routesUrls;
 

@@ -5,11 +5,18 @@ import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
-import { loginValidationSchema } from "helpers/schema/loginSchema";
-
 import style from "../styles/Authorization.module.scss";
+import Link from "next/link";
+import { routesUrls } from "constants/routes";
+import { IAuthorizationProps } from "types/types";
 
-export const Authorization: FC<any> = ({ title, fieldsForm }) => {
+const { LOGIN, REGISTRATION } = routesUrls;
+
+export const Authorization: FC<IAuthorizationProps> = ({
+  validSchema,
+  pageLogin,
+  initialFieldsForm,
+}) => {
   const {
     register,
     handleSubmit,
@@ -17,21 +24,29 @@ export const Authorization: FC<any> = ({ title, fieldsForm }) => {
   } = useForm<Record<string, string>>({
     mode: "all",
     defaultValues: {},
-    resolver: yupResolver(loginValidationSchema),
+    resolver: yupResolver(validSchema),
   });
 
   const router = useRouter();
 
   const [resError, setResError] = useState<string | undefined>("");
 
-  const submitForm = (data: any) =>
-    signIn("credentials", { ...data, redirect: false }).then((res) => {
-      if (res?.ok) {
-        router.back();
-      } else {
-        setResError(res?.error);
-      }
-    });
+  const submitForm = (data: any) => {
+    if (pageLogin) {
+      signIn("credentials", { ...data, redirect: false }).then((res) => {
+        if (res?.ok) {
+          router.back();
+        } else {
+          setResError(res?.error);
+        }
+      });
+    } else {
+      return data;
+    }
+  };
+
+  const checkTitleText = (isLogin: boolean) =>
+    isLogin ? "Sign In" : "Sign Up";
 
   return (
     <>
@@ -48,13 +63,19 @@ export const Authorization: FC<any> = ({ title, fieldsForm }) => {
       </Head>
       <div className={style.login}>
         <div className={style.main}>
+          <div className={style.linkBox}>
+            <Link href={!pageLogin ? LOGIN : REGISTRATION}>
+              <a>{checkTitleText(!pageLogin)}</a>
+            </Link>
+          </div>
+
           <form
             onSubmit={handleSubmit(submitForm)}
             className={resError && style.formError}
           >
-            <h2>{title}</h2>
+            <h2>{checkTitleText(pageLogin)}</h2>
             {resError && <div className={style.resError}>{resError}</div>}
-            {fieldsForm.map(({ id, name, type }: any) => (
+            {initialFieldsForm?.map(({ id, name, type }) => (
               <div
                 className={
                   (errors[name] && touchedFields[name] && style.errors) || ""
@@ -72,8 +93,7 @@ export const Authorization: FC<any> = ({ title, fieldsForm }) => {
                 )}
               </div>
             ))}
-
-            <button type="submit">{title}</button>
+            <button type="submit">{checkTitleText(pageLogin)}</button>
           </form>
         </div>
       </div>

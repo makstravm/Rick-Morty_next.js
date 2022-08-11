@@ -8,9 +8,10 @@
   font-family: "Jost", sans-serif;
   background: linear-gradient(to bottom, #2e2f38, #0e0e0e, #101010);
 }
+
 .main {
   width: 350px;
-  height: 500px;
+  max-height: 525px;
   background: transparent;
   overflow: hidden;
   border-radius: 10px;
@@ -29,14 +30,15 @@
   }
   form {
     background: #eeeeee;
-    border-radius: 60%/10%;
-    height: 85%;
-    margin: 100px -20px 0 -20px;
+    border-radius: 60% 60% 0% 0%/10%;
+    max-height: 455px;
+    overflow-y: scroll;
+    margin: 0 -40px 0 -20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 0px;
+    padding-bottom: 25px;
     &.formError {
       background: #ffeeee;
     }
@@ -57,10 +59,11 @@
   }
   button {
     width: 60%;
-    height: 40px;
     color: #fff;
     margin: 10px auto;
     font-size: 1.6rem;
+    line-height: 2.2rem;
+    padding: 10px;
     justify-content: center;
     display: block;
     background: #24252b;
@@ -83,8 +86,6 @@
     display: flex;
     margin: 40px 20px;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.5s ease-in-out;
   }
   .resError {
     width: 60%;
@@ -98,6 +99,20 @@
     background-color: #fdcece;
     margin-bottom: 15px;
     border-radius: 15px;
+  }
+}
+
+.linkBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  a {
+    color: #fff;
+    font-size: 2.3rem;
+    display: flex;
+    font-weight: bold;
+    text-decoration: none;
   }
 }
 

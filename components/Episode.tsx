@@ -9,7 +9,9 @@ const Episode: FC<IEpisodeProps> = ({
   <section className={`container `}>
     <h4>
       Episode {episode.slice(-2)}
-      <span style={{ display: "block" }}>Season {episode.slice(1, 3)}</span>
+      <span style={{ display: "block", fontSize: "1.4rem", color: "#ececec" }}>
+        ( Season {episode.slice(1, 3)} )
+      </span>
     </h4>
     <div className="description">
       <h6>

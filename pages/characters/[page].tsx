@@ -3,10 +3,13 @@ import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import CharactersList from "components/main/CharactersList";
 import Pagination from "components/Pagination";
-import { routesUrls } from "constants/routes";
-import { ICharactersProps } from "types/types";
 import Preloader from "components/Preloader";
-import { gql } from "helpers/gql";
+
+import { routesUrls } from "constants/routes";
+
+import { gql } from "api";
+
+import { ICharactersProps } from "types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {

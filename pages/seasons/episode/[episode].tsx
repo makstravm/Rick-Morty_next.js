@@ -3,7 +3,8 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Episode from "components/main/Episode";
 import Layout from "components/Layout";
 
-import { gql } from "helpers/gql";
+import { gql } from "api";
+
 import { IEpisodePageProps } from "types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {

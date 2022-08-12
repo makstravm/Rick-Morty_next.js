@@ -1,13 +1,13 @@
 import type { GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
+import MainCharacters from "components/MainCharacters";
 
-import { gql } from "helpers/gql";
+import { gql } from "api";
 
 import { IHomeProps } from "types/types";
 
 import style from "../styles/Home.module.scss";
-import MainCharacters from "components/MainCharacters";
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await gql(
@@ -35,7 +35,7 @@ const Home: NextPage<IHomeProps> = ({ characters }) => (
     <div className={`${style.container} container`}>
       <div className={style.title}>
         <h1>
-          Rick <span>and</span> Morty
+          Rick <span>and{process.env.API_URL}</span> Morty
         </h1>
         <p>
           An animated series on adult-swim about the infinite adventures of

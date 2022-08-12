@@ -22,16 +22,13 @@ export class API {
     requestMethod: string,
     requestBody?: T
   ): Promise<API> {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/${endpoints}`,
-      {
-        method: requestMethod,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
-    );
+    const response = await fetch(`http://localhost:4000/${endpoints}`, {
+      method: requestMethod,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
 
     if (response.ok) {
       return await response.json();

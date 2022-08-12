@@ -15,3 +15,40 @@ const getGQL =
   };
 
 export const gql = getGQL(`${process.env.GQL_API}/graphql`);
+
+export class API {
+  static async request<T>(
+    endpoints: string,
+    requestMethod: string,
+    requestBody?: T
+  ): Promise<API> {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/${endpoints}`,
+      {
+        method: requestMethod,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
+
+    if (response.ok) {
+      return await response.json();
+    }
+
+    throw response.statusText;
+  }
+
+  static async get(endpoints: string) {
+    const resolved = await this.request(endpoints, "GET");
+
+    return resolved;
+  }
+
+  static async post<T>(endpoints: string, requestBody: T) {
+    const resolved = await this.request(endpoints, "POST", requestBody);
+
+    return resolved;
+  }
+}

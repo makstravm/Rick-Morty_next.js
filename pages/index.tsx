@@ -35,7 +35,7 @@ const Home: NextPage<IHomeProps> = ({ characters }) => (
     <div className={`${style.container} container`}>
       <div className={style.title}>
         <h1>
-          Rick <span>and</span> Morty
+          Rick <span>and{process.env.API_URL}</span> Morty
         </h1>
         <p>
           An animated series on adult-swim about the infinite adventures of

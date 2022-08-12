@@ -22,7 +22,7 @@ export class API {
     requestMethod: string,
     requestBody?: T
   ): Promise<API> {
-    const response = await fetch(`http://localhost:4000/${endpoints}`, {
+    const response = await fetch(`${process.env.apiUrl}/${endpoints}`, {
       method: requestMethod,
       headers: {
         "Content-Type": "application/json",

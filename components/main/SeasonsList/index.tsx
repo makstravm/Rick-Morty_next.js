@@ -1,9 +1,11 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { routesUrls } from "constants/routes";
-import { ISeasonsProps } from "types/types";
-import style from "styles/SeasonsList.module.scss";
+
+import style from "./SeasonsList.module.scss";
+import { ISeasonsProps } from "./types";
 
 const SeasonList: FC<ISeasonsProps> = ({ seasons }) => (
   <section className={`container ${style.episodes}`}>

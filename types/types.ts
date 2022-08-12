@@ -13,12 +13,6 @@ export interface IAllInfo {
   prev: string | null;
 }
 
-export interface IResponseSeasonsData {
-  id: number;
-  image: string;
-  season: string;
-}
-
 export interface ILayoutProps {
   children: ReactNode;
   title: string;
@@ -53,11 +47,9 @@ export interface IPageErrorProps {
 export interface IEpisodesOfSeasonsProps {
   season: Pick<IEpisodeData, "id" | "name" | "episode">[];
 }
+
 export interface IEpisodePageProps {
   episodeData: IEpisodeData;
-}
-export interface ISeasonsProps {
-  seasons: IResponseSeasonsData[];
 }
 
 export interface ILocationsPageProps {

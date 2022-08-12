@@ -10,7 +10,7 @@ import { routesUrls } from "constants/routes";
 
 import { IAuthorizationProps } from "./types";
 
-import style from "../styles/Authorization.module.scss";
+import style from "./Authorization.module.scss";
 
 const { LOGIN, REGISTRATION } = routesUrls;
 

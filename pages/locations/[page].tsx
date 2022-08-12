@@ -8,7 +8,7 @@ import Pagination from "components/Pagination";
 import Preloader from "components/Preloader";
 import LocationsList from "components/main/LocationList";
 
-import { gql } from "helpers/gql";
+import { gql } from "api";
 
 import { ILocationsPageProps } from "types/types";
 

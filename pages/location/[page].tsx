@@ -1,10 +1,11 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
-
-import { gql } from "helpers/gql";
-import { ILocationPageProps } from "types/types";
 import Location from "components/main/Location";
+
+import { gql } from "api";
+
+import { ILocationPageProps } from "types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {

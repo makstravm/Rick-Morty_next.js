@@ -1,9 +1,12 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { IMainCharactersProps } from "types/types";
+
 import { routesUrls } from "constants/routes";
-import styles from "../styles/MainCharacters.module.scss";
+
+import { IMainCharactersProps } from "./types";
+
+import styles from "./MainCharacters.module.scss";
 
 const MainCharacters: FC<IMainCharactersProps> = ({ characters }) => (
   <div className={styles.container}>

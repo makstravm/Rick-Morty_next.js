@@ -1,7 +1,9 @@
 import { FC } from "react";
-import { routesUrls } from "constants/routes";
 import Link from "next/link";
-import { ILocationProps } from "types/types";
+
+import { routesUrls } from "constants/routes";
+
+import { ILocationProps } from "./types";
 
 const Location: FC<ILocationProps> = ({
   locationOne: { name, type, dimension, residents },

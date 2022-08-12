@@ -7,7 +7,7 @@ const MyApp = ({
   pageProps: { session, ...pageProps },
 }: AppProps) => (
   <SessionProvider session={session}>
-    <Component {...pageProps} />;
+    <Component {...pageProps} />
   </SessionProvider>
 );
 

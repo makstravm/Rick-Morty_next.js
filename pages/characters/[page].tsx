@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import Layout from "components/Layout";
-import CharactersList from "components/CharactersList";
+import CharactersList from "components/main/CharactersList";
 import Pagination from "components/Pagination";
 import { routesUrls } from "constants/routes";
 import { ICharactersProps } from "types/types";

@@ -1,9 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
+
 import { routesUrls } from "constants/routes";
 
-import { ILocationsListProps } from "types/types";
-import style from "../styles/LocationsList.module.scss";
+import { ILocationsListProps } from "./types";
+
+import style from "./LocationsList.module.scss";
 
 const { LOCATION } = routesUrls;
 

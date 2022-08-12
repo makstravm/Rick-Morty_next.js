@@ -2,8 +2,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
 
-import { IEpisodesOfSeasonsProps, IResponseSeasonsData } from "types/types";
-import EpisodeList from "components/EpisodeList";
+import { IResponseSeasonsData } from "components/main/SeasonsList/types";
+import { IEpisodesOfSeasonsProps } from "types/types";
+import EpisodeList from "components/main/EpisodeList";
 import { gql } from "helpers/gql";
 
 export const getStaticPaths: GetStaticPaths = async () => {

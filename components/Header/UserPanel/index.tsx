@@ -1,6 +1,8 @@
-import { routesUrls } from "constants/routes";
 import Link from "next/link";
-import style from "styles/UserPanel.module.scss";
+
+import { routesUrls } from "constants/routes";
+
+import style from "./UserPanel.module.scss";
 
 const UserPanel = () => {
   return (

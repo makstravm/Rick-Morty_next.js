@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import { routesUrls } from "constants/routes";
 import { navigation } from "constants/navigation";
 
-import logo from "public/logo.png";
 import UserPanel from "./UserPanel";
+
+import logo from "public/logo.png";
 
 const Header = () => {
   const { pathname } = useRouter();

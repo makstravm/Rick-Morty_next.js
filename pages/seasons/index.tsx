@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import Layout from "components/Layout";
-import SeasonsList from "components/SeasonsList";
-import { ISeasonsProps } from "types/types";
+import SeasonsList from "components/main/SeasonsList";
+import { ISeasonsProps } from "components/main/SeasonsList/types";
 
 export const getStaticProps: GetStaticProps = async () => {
   try {

@@ -1,4 +1,6 @@
 import { ICharacter } from "components/main/Character/types";
+import { IEpisodeData } from "components/main/Episode/types";
+import { ILocation } from "components/main/Location/types";
 import { ReactNode } from "react";
 
 export interface IResponse<T> {

@@ -1,7 +1,9 @@
-import { routesUrls } from "constants/routes";
-import Link from "next/link";
 import { FC } from "react";
-import { IEpisodeProps } from "types/types";
+import Link from "next/link";
+
+import { routesUrls } from "constants/routes";
+
+import { IEpisodeProps } from "./types";
 
 const Episode: FC<IEpisodeProps> = ({
   episodeOne: { name, episode, air_date, characters },

@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import Episode from "components/Episode";
+import Episode from "components/main/Episode";
 import Layout from "components/Layout";
 
 import { gql } from "helpers/gql";

@@ -6,7 +6,7 @@ import { routesUrls } from "constants/routes";
 import Layout from "components/Layout";
 import Pagination from "components/Pagination";
 import Preloader from "components/Preloader";
-import LocationsList from "components/LocationsList";
+import LocationsList from "components/main/LocationList";
 
 import { gql } from "helpers/gql";
 

@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 
 import { gql } from "helpers/gql";
 import { ILocationPageProps } from "types/types";
-import Location from "components/Location";
+import Location from "components/main/Location";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {

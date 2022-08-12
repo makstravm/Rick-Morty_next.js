@@ -1,9 +1,10 @@
 import { FC } from "react";
 import Image from "next/image";
-import { routesUrls } from "constants/routes";
 import Link from "next/link";
 
-import { ICharactersListProps } from "types/types";
+import { routesUrls } from "constants/routes";
+
+import { ICharactersListProps } from "./types";
 
 const { CHARACTER } = routesUrls;
 

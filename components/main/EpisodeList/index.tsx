@@ -1,8 +1,11 @@
-import { routesUrls } from "constants/routes";
-import Link from "next/link";
 import { FC } from "react";
-import { IEpisodesListProps } from "types/types";
-import styles from "../styles/EpisodeList.module.scss";
+import Link from "next/link";
+
+import { routesUrls } from "constants/routes";
+
+import { IEpisodesListProps } from "./types";
+
+import styles from "./EpisodeList.module.scss";
 
 const EpisodesList: FC<IEpisodesListProps> = ({ episodes }) => (
   <section className={`container ${styles.episodeList}`}>

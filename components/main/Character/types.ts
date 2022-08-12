@@ -1,4 +1,5 @@
-import { IEpisodeData, ILocation } from "types/types";
+import { IEpisodeData } from "../Episode/types";
+import { ILocation } from "../Location/types";
 
 export interface ICharacter {
   id: number;

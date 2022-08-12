@@ -19,22 +19,6 @@ export interface IResponseSeasonsData {
   season: string;
 }
 
-export interface IEpisodeData {
-  id: number;
-  name: string;
-  air_date: string;
-  episode: string;
-  characters: Pick<ICharacter, "id" | "name">[];
-}
-
-export interface ILocation {
-  id: number;
-  name: string;
-  type: string;
-  dimension: string;
-  residents: Pick<ICharacter, "id" | "name">[];
-}
-
 export interface ILayoutProps {
   children: ReactNode;
   title: string;
@@ -53,10 +37,6 @@ export interface ICharactersProps {
   results: Pick<ICharacter, "id" | "name" | "image">[];
 }
 
-export interface ICharactersListProps {
-  characters: Pick<ICharacter, "id" | "name" | "image">[];
-}
-
 export interface IPaginationProps {
   info: Omit<IAllInfo, "count">;
   path: string;
@@ -70,20 +50,11 @@ export interface IPageErrorProps {
   codeError: string;
 }
 
-export interface IEpisodesListProps {
-  episodes: Pick<IEpisodeData, "id" | "name" | "episode">[];
-}
-
 export interface IEpisodesOfSeasonsProps {
   season: Pick<IEpisodeData, "id" | "name" | "episode">[];
 }
-
 export interface IEpisodePageProps {
   episodeData: IEpisodeData;
-}
-
-export interface IEpisodeProps {
-  episodeOne: IEpisodeData;
 }
 export interface ISeasonsProps {
   seasons: IResponseSeasonsData[];
@@ -94,14 +65,6 @@ export interface ILocationsPageProps {
   results: Pick<ILocation, "id" | "name">[];
 }
 
-export interface ILocationsListProps {
-  locations: Pick<ILocation, "id" | "name">[];
-}
-
 export interface ILocationPageProps {
   location: ILocation;
-}
-
-export interface ILocationProps {
-  locationOne: ILocation;
 }

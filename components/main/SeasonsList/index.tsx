@@ -4,8 +4,9 @@ import Link from "next/link";
 
 import { routesUrls } from "constants/routes";
 
-import style from "./SeasonsList.module.scss";
 import { ISeasonsProps } from "./types";
+
+import style from "./SeasonsList.module.scss";
 
 const SeasonList: FC<ISeasonsProps> = ({ seasons }) => (
   <section className={`container ${style.episodes}`}>

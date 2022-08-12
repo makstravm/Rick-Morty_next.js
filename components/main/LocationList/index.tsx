@@ -5,7 +5,7 @@ import { routesUrls } from "constants/routes";
 
 import { ILocationsListProps } from "./types";
 
-import style from "../styles/LocationsList.module.scss";
+import style from "./LocationsList.module.scss";
 
 const { LOCATION } = routesUrls;
 

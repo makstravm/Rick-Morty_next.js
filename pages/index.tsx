@@ -1,13 +1,13 @@
 import type { GetStaticProps, NextPage } from "next";
 
 import Layout from "components/Layout";
-import MainCharacters from "components/MainCharacters";
 
 import { gql } from "helpers/gql";
 
 import { IHomeProps } from "types/types";
 
 import style from "../styles/Home.module.scss";
+import MainCharacters from "components/MainCharacters";
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await gql(

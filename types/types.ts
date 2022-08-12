@@ -24,10 +24,6 @@ export interface IHomeProps {
   characters: Pick<ICharacter, "id" | "name" | "image">[];
 }
 
-export interface IMainCharactersProps {
-  characters: Pick<ICharacter, "id" | "name" | "image">[];
-}
-
 export interface ICharactersProps {
   info: Omit<IAllInfo, "count">;
   results: Pick<ICharacter, "id" | "name" | "image">[];

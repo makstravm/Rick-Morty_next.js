@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { routesUrls } from "constants/routes";
 
-import { IMainCharactersProps } from "types/types";
+import { IMainCharactersProps } from "./types";
 
 import styles from "./MainCharacters.module.scss";
 

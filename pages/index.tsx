@@ -34,9 +34,7 @@ const Home: NextPage<IHomeProps> = ({ characters }) => (
   <Layout title="Home">
     <div className={`${style.container} container`}>
       <div className={style.title}>
-        <h1>
-          Rick <span>and{process.env.API_URL}</span> Morty
-        </h1>
+        <h1>Rick and Morty</h1>
         <p>
           An animated series on adult-swim about the infinite adventures of
           Rick, a genius alcoholic and careless scientist, with his grandson

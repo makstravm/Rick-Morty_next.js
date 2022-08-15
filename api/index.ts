@@ -30,11 +30,13 @@ export class API {
       body: JSON.stringify(requestBody),
     });
 
+    const data = await response.json();
+
     if (response.ok) {
-      return await response.json();
+      return data;
     }
 
-    throw response.statusText;
+    throw data;
   }
 
   static async get(endpoints: string) {

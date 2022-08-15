@@ -18,6 +18,8 @@ export const Authorization: FC<IAuthorizationProps> = ({
   validSchema,
   pageLogin,
   initialFieldsForm,
+  handleSubmitForm,
+  error,
 }) => {
   const {
     register,
@@ -29,23 +31,8 @@ export const Authorization: FC<IAuthorizationProps> = ({
     resolver: yupResolver(validSchema),
   });
 
-  const router = useRouter();
-
-  const [resError, setResError] = useState<string | undefined>("");
-
-  const submitForm = (data: any) => {
-    if (pageLogin) {
-      signIn("credentials", { ...data, redirect: false }).then((res) => {
-        if (res?.ok) {
-          router.back();
-        } else {
-          setResError(res?.error);
-        }
-      });
-    } else {
-      return data;
-    }
-  };
+  const submitForm = (dataForm: Record<string, string>) =>
+    handleSubmitForm(dataForm);
 
   const checkTitleText = (isLogin: boolean) =>
     isLogin ? "Sign In" : "Sign Up";
@@ -73,10 +60,10 @@ export const Authorization: FC<IAuthorizationProps> = ({
 
           <form
             onSubmit={handleSubmit(submitForm)}
-            className={resError && style.formError}
+            className={error && style.formError}
           >
             <h2>{checkTitleText(pageLogin)}</h2>
-            {resError && <div className={style.resError}>{resError}</div>}
+            {!!error && <div className={style.resError}>{error}</div>}
             {initialFieldsForm?.map(({ id, name, type }) => (
               <div
                 className={

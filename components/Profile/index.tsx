@@ -1,9 +1,12 @@
 import { FC } from "react";
-import { IProfileProps } from "./types";
 import Image from "next/image";
+
+import { IProfileProps } from "./types";
 
 import userImage from "public/user.png";
 import style from "./Profile.module.scss";
+import { FavoriteList } from "./FavoriteList";
+import { routesUrls } from "constants/routes";
 
 const Profile: FC<IProfileProps> = ({
   user: {
@@ -20,7 +23,18 @@ const Profile: FC<IProfileProps> = ({
         Name<span>{name}</span>
       </h6>
       <p>My Favorites</p>
-      <div className={style.boxFavorites}></div>
+      <div className={style.boxFavorites}>
+        <FavoriteList
+          list={characters}
+          title="Characters"
+          path={routesUrls.CHARACTERS}
+        />
+        <FavoriteList
+          list={episodes}
+          title="Episodes"
+          path={routesUrls.SEASONS}
+        />
+      </div>
     </div>
   </section>
 );

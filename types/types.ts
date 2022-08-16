@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
+
 import { ICharacter } from "components/main/Character/types";
 import { IEpisodeData } from "components/main/Episode/types";
 import { ILocation } from "components/main/Location/types";
-import { ReactNode } from "react";
+import { IUser } from "components/Profile/types";
 
 export interface IResponse<T> {
   info: IAllInfo;
@@ -15,19 +17,12 @@ export interface IAllInfo {
   prev: string | null;
 }
 
-export interface IUser {
-  id: number;
-  password: string;
-  name: string;
-  confirmPassword: string;
-}
-
 export interface ILayoutProps {
   children: ReactNode;
   title: string;
 }
 
-export interface IProfilePage {
+export interface IProfilePageProps {
   user: IUser;
 }
 

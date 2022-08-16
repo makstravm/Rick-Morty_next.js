@@ -1,7 +1,11 @@
 import { API } from "api";
 import { GetServerSideProps, NextPage } from "next";
+
 import Layout from "components/Layout";
-import { IProfilePage, IUser } from "types/types";
+import Profile from "components/Profile";
+
+import { IUser } from "components/Profile/types";
+import { IProfilePageProps } from "types/types";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const user = await API.get<IUser>(`users/${context?.params?.id}`);
@@ -15,9 +19,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props: { user } };
 };
 
-const ProfilePage: NextPage<IProfilePage> = ({ user }) => (
+const ProfilePage: NextPage<IProfilePageProps> = ({ user }) => (
   <Layout title={user.name}>
-    <div>Profile</div>
+    <Profile user={user} />
   </Layout>
 );
 

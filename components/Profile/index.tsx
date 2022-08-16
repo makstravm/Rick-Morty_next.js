@@ -3,10 +3,10 @@ import Image from "next/image";
 
 import { IProfileProps } from "./types";
 
-import userImage from "public/user.png";
-import style from "./Profile.module.scss";
 import { FavoriteList } from "./FavoriteList";
 import { routesUrls } from "constants/routes";
+import { randomLinkUserImage } from "helpers/randomUserImg";
+import style from "./Profile.module.scss";
 
 const Profile: FC<IProfileProps> = ({
   user: {
@@ -16,9 +16,9 @@ const Profile: FC<IProfileProps> = ({
 }) => (
   <section className={`container ${style.profile}`}>
     <div className={style.boxImg}>
-      <Image width={150} height={150} src={userImage} alt={name} />
+      <Image width={150} height={150} src={randomLinkUserImage()} alt={name} />
     </div>
-    <div className="description location">
+    <div className={`description ${style.description}`}>
       <h6>
         Name<span>{name}</span>
       </h6>

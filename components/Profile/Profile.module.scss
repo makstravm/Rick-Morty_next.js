@@ -1,6 +1,7 @@
 .profile {
   padding-top: 35px;
   display: flex;
+  align-items: flex-start;
   max-width: 850px;
 }
 .boxImg {
@@ -15,4 +16,7 @@
 }
 .boxFavorites {
   padding-left: 20px;
+}
+.description {
+  padding-top: 20px;
 }

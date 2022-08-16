@@ -3,7 +3,12 @@ import Link from "next/link";
 
 import { IFavoriteListProps } from "./type";
 
-export const FavoriteList: FC<IFavoriteListProps> = ({ list, title, path }) => (
+export const FavoriteList: FC<IFavoriteListProps> = ({
+  list,
+  title,
+  pathToItem,
+  pathToList,
+}) => (
   <div>
     <details>
       <summary>
@@ -12,12 +17,12 @@ export const FavoriteList: FC<IFavoriteListProps> = ({ list, title, path }) => (
       </summary>
       <div>
         {!list.length && (
-          <Link href={path}>
+          <Link href={pathToList}>
             <a>{`Go to the list of ${title}`}</a>
           </Link>
         )}
         {list.map(({ id, name }) => (
-          <Link key={id} href={"/" + id}>
+          <Link key={id} href={pathToItem + "/" + id}>
             <a>
               {name}
               <span>;&nbsp;</span>

@@ -27,12 +27,14 @@ const Profile: FC<IProfileProps> = ({
         <FavoriteList
           list={characters}
           title="Characters"
-          path={routesUrls.CHARACTERS}
+          pathToList={`${routesUrls.CHARACTERS}/1`}
+          pathToItem={routesUrls.CHARACTER}
         />
         <FavoriteList
           list={episodes}
           title="Episodes"
-          path={routesUrls.SEASONS}
+          pathToList={routesUrls.SEASONS}
+          pathToItem={routesUrls.EPISODE}
         />
       </div>
     </div>

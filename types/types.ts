@@ -15,9 +15,20 @@ export interface IAllInfo {
   prev: string | null;
 }
 
+export interface IUser {
+  id: number;
+  password: string;
+  name: string;
+  confirmPassword: string;
+}
+
 export interface ILayoutProps {
   children: ReactNode;
   title: string;
+}
+
+export interface IProfilePage {
+  user: IUser;
 }
 
 export interface IHomeProps {

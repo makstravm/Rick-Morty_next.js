@@ -1,7 +1,7 @@
 export const jwtDecode = (token: string) => {
-  let arrToken = token.split(".");
+  const arrToken = token.split(".");
 
-  let base64Token = atob(arrToken[1]);
+  const base64Token = atob(arrToken[1]);
 
   return JSON.parse(base64Token);
 };

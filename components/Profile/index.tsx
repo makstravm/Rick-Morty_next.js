@@ -1,11 +1,13 @@
 import { FC } from "react";
 import Image from "next/image";
 
-import { IProfileProps } from "./types";
-
 import { FavoriteList } from "./FavoriteList";
 import { routesUrls } from "constants/routes";
+
 import { randomLinkUserImage } from "helpers/randomUserImg";
+
+import { IProfileProps } from "./types";
+
 import style from "./Profile.module.scss";
 
 const Profile: FC<IProfileProps> = ({

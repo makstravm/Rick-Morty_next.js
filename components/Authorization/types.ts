@@ -19,4 +19,6 @@ export interface IAuthorizationProps {
   >;
   initialFieldsForm: IInitialFieldsForm[];
   pageLogin: boolean;
+  handleSubmitForm: (data: Record<string, string>) => Promise<void>;
+  error: string;
 }

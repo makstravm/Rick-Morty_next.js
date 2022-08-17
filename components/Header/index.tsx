@@ -8,6 +8,7 @@ import { navigation } from "constants/navigation";
 import UserPanel from "./UserPanel";
 
 import logo from "public/logo.png";
+import FavoriteBtn from "components/FavoriteBtn";
 
 const Header = () => {
   const { pathname } = useRouter();
@@ -20,6 +21,7 @@ const Header = () => {
             <Image src={logo} alt="logo" />
           </a>
         </Link>
+        <FavoriteBtn />
         <div>
           {navigation.map(({ id, title, path }) => (
             <Link

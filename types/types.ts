@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
+
 import { ICharacter } from "components/main/Character/types";
 import { IEpisodeData } from "components/main/Episode/types";
 import { ILocation } from "components/main/Location/types";
-import { ReactNode } from "react";
+import { IUser } from "components/Profile/types";
 
 export interface IResponse<T> {
   info: IAllInfo;
@@ -18,6 +20,10 @@ export interface IAllInfo {
 export interface ILayoutProps {
   children: ReactNode;
   title: string;
+}
+
+export interface IProfilePageProps {
+  user: IUser;
 }
 
 export interface IHomeProps {

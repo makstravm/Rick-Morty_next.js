@@ -17,11 +17,11 @@ const getGQL =
 export const gql = getGQL(`${process.env.GQL_API}/graphql`);
 
 export class API {
-  static async request<T>(
+  static async request<G, T>(
     endpoints: string,
     requestMethod: string,
     requestBody?: T
-  ): Promise<API> {
+  ): Promise<G> {
     const response = await fetch(`${process.env.apiUrl}/${endpoints}`, {
       method: requestMethod,
       headers: {
@@ -39,8 +39,8 @@ export class API {
     throw data;
   }
 
-  static async get(endpoints: string) {
-    const resolved = await this.request(endpoints, "GET");
+  static async get<G>(endpoints: string) {
+    const resolved = await this.request<G, G>(endpoints, "GET");
 
     return resolved;
   }

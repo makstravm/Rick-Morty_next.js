@@ -1,0 +1,22 @@
+.profile {
+  padding-top: 35px;
+  display: flex;
+  align-items: flex-start;
+  max-width: 850px;
+}
+.boxImg {
+  border-radius: 50%;
+  margin-right: 2vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+.boxFavorites {
+  padding-left: 20px;
+}
+.description {
+  padding-top: 20px;
+}

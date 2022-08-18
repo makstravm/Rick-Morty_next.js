@@ -1,15 +1,16 @@
-import { API } from "api";
-import Preloader from "components/Preloader";
-import { jwtDecode } from "helpers/jwtDecode";
-import { useSession } from "next-auth/react";
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
-import { IUser } from "components/Profile/types";
+import { useSession } from "next-auth/react";
 
-interface Iuu {
-  user: IUser | null;
-  setUser: (data: IUser) => void;
-}
-export const UserContext = createContext<Iuu>({
+import { API } from "api";
+
+import Preloader from "components/Preloader";
+
+import { jwtDecode } from "helpers/jwtDecode";
+
+import { IUser } from "components/Profile/types";
+import { IUserContext } from "./types";
+
+export const UserContext = createContext<IUserContext>({
   user: null,
   setUser: () => {},
 });

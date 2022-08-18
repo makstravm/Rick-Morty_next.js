@@ -21,7 +21,6 @@ const Header = () => {
             <Image src={logo} alt="logo" />
           </a>
         </Link>
-        <FavoriteBtn />
         <div>
           {navigation.map(({ id, title, path }) => (
             <Link

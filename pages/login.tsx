@@ -7,6 +7,7 @@ import { loginFormFields } from "constants/form/loginFormsFields";
 
 import { loginValidationSchema } from "helpers/schema/loginSchema";
 import { useRouter } from "next/router";
+import { routesUrls } from "constants/routes";
 
 const LogInPage = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const LogInPage = () => {
   const submitForm = (data: Record<string, string>) =>
     signIn("credentials", { ...data, redirect: false }).then((res) => {
       if (res?.ok) {
-        router.back();
+        router.push(routesUrls.HOME);
       } else {
         setResError(res?.error as string);
       }

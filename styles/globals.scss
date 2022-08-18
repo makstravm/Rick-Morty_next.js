@@ -138,6 +138,22 @@ footer {
     border-radius: 15px;
     overflow: hidden;
   }
+  &__box-img {
+    position: relative;
+  }
+  &__favorite {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    border-top-left-radius: 25px;
+    background-color: #27272e;
+    bottom: -1px;
+    right: -1px;
+  }
 }
 
 ul.pagination {

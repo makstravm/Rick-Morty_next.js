@@ -1,5 +1,7 @@
 .userPanel {
   padding: 0 0 0 25px;
+  display: flex;
+  align-items: center;
   a {
     color: #fff;
     background-color: transparent;
@@ -16,6 +18,23 @@
       text-shadow: 0 0 12px #00ff04;
       box-shadow: 0px 0px 8px 0px #1c8c04;
       background-color: #222225;
+    }
+  }
+  span {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 0 0 15px;
+    cursor: pointer;
+    svg {
+      width: 25px;
+      fill: #00ff04;
+      stroke-width: 4px;
+      transform: scale(-1, -1);
     }
   }
 }

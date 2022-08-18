@@ -8,7 +8,6 @@ import { navigation } from "constants/navigation";
 import UserPanel from "./UserPanel";
 
 import logo from "public/logo.png";
-import FavoriteBtn from "components/FavoriteBtn";
 
 const Header = () => {
   const { pathname } = useRouter();

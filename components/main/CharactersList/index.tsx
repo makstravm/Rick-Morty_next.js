@@ -28,7 +28,7 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
     user && user?.favorites?.characters.some((c) => c.id === id);
 
   const handleFavoiteCharacterClick = async (
-    e: MouseEvent<HTMLButtonElement, MouseEvent>
+    e: MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
 
@@ -66,7 +66,10 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
           <div className="characters-list__box-img">
             <Image src={image} alt={name} width={176} height={176} />
             <div className="characters-list__favorite">
-              <FavoriteBtn />
+              <FavoriteBtn
+                isFavorite={isFavorite}
+                handleClick={handleFavoiteCharacterClick}
+              />
             </div>
           </div>
           <p>{name}</p>

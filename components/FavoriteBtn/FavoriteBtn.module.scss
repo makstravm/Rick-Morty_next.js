@@ -5,17 +5,33 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
+    transition: all 0.3s;
     &:hover {
-      svg {
-        fill: #2eff00;
-      }
+      transform: scale(1.2, 1.2);
+    }
+    &:active {
+      animation: effectClick 0.2s ease-out;
     }
   }
   svg {
     width: 20px;
     stroke-width: 14px;
     stroke: #2eff00;
-    fill: transparent;
     transition: all 0.3s;
+  }
+}
+
+@keyframes effectClick {
+  50% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+  99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
   }
 }

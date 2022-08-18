@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import { IUser } from "components/Profile/types";
 
-export const UserContext = createContext<any>({});
+export const UserContext = createContext<IUser | null>(null);
 
 export const UserContextProvider: FC<{ children: ReactNode }> = ({
   children,

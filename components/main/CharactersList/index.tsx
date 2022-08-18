@@ -8,6 +8,8 @@ import { routesUrls } from "constants/routes";
 import FavoriteBtn from "components/FavoriteBtn";
 import { UserContext } from "context/userContext";
 
+import { API } from "api";
+
 import { ICharactersListProps } from "./types";
 import { ICharacter } from "../Character/types";
 
@@ -18,7 +20,7 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
   image,
   name,
 }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const route = useRouter();
 
@@ -29,6 +31,28 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
     if (!user) {
       return route.push(routesUrls.LOGIN);
     }
+
+    let updatedCharacters: Pick<ICharacter, "id" | "name">[] | [] = [];
+
+    if (isFavorite) {
+      updatedCharacters = user?.favorites?.characters.filter(
+        (c) => c.id !== id
+      );
+    } else {
+      updatedCharacters = [...user.favorites.characters, { id, name }];
+    }
+
+    const newUser = {
+      ...user,
+      favorites: {
+        ...user.favorites,
+        characters: updatedCharacters,
+      },
+    };
+
+    API.put(`users/${user.id}`, newUser)
+      .then((res) => setUser(res))
+      .catch(() => setUser(user));
   };
 
   return (

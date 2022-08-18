@@ -11,8 +11,10 @@ const UserPanel = () => {
 
   if (user) {
     return (
-      <div className={style.userPanel}>
-        <span>Hi, {user?.name}</span>
+      <div className={style.userPanel + " " + style.userLink}>
+        <Link href={`${routesUrls.PROFILE}/${user.id}`}>
+          <a>Hi, {user?.name}</a>
+        </Link>
         <button onClick={() => signOut()}>
           <svg viewBox="0 0 320.002 320.002">
             <path

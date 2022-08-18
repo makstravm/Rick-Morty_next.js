@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, MouseEvent, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -27,7 +27,11 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
   const isFavorite =
     user && user?.favorites?.characters.some((c) => c.id === id);
 
-  const handleFavoiteClick = async () => {
+  const handleFavoiteCharacterClick = async (
+    e: MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+
     if (!user) {
       return route.push(routesUrls.LOGIN);
     }
@@ -57,7 +61,6 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
 
   return (
     <div className="characters-list__item">
-      <button onClick={handleFavoiteClick}>asdsad</button>
       <Link href={`${CHARACTER}/${id}`}>
         <a>
           <div className="characters-list__box-img">

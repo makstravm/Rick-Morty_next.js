@@ -5,7 +5,14 @@ import { useSession } from "next-auth/react";
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import { IUser } from "components/Profile/types";
 
-export const UserContext = createContext<IUser | null>(null);
+interface Iuu {
+  user: IUser | null;
+  setUser: (data: IUser) => void;
+}
+export const UserContext = createContext<Iuu>({
+  user: null,
+  setUser: () => {},
+});
 
 export const UserContextProvider: FC<{ children: ReactNode }> = ({
   children,
@@ -26,5 +33,9 @@ export const UserContextProvider: FC<{ children: ReactNode }> = ({
     return <Preloader />;
   }
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

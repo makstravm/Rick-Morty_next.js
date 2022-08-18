@@ -52,7 +52,7 @@ export class API {
   }
 
   static async put<T>(endpoints: string, requestBody: T) {
-    const resolved = await this.request(endpoints, "PUT", requestBody);
+    const resolved = await this.request<T, T>(endpoints, "PUT", requestBody);
 
     return resolved;
   }

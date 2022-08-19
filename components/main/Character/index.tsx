@@ -13,6 +13,7 @@ import FavoriteBtn from "components/FavoriteBtn";
 import { ICharacter, ICharacterProps } from "./types";
 
 import style from "./Character.module.scss";
+import DetailsList from "components/DetailsList/DetailsList";
 
 const Character = ({ character }: ICharacterProps) => {
   const { user, setUser } = useContext(UserContext);
@@ -110,21 +111,11 @@ const Character = ({ character }: ICharacterProps) => {
             <span>---</span>
           )}
         </p>
-        <details>
-          <summary>
-            Episodes <span>{`( ${character.episode.length} )`}</span>
-          </summary>
-          <div>
-            {character.episode.map(({ id, name }) => (
-              <Link key={id} href={routesUrls.EPISODE + "/" + id}>
-                <a>
-                  {name}
-                  <span>,&nbsp;</span>
-                </a>
-              </Link>
-            ))}
-          </div>
-        </details>
+        <DetailsList
+          title="Episodes"
+          arr={character.episode}
+          route={routesUrls.EPISODE}
+        />
       </div>
     </section>
   );

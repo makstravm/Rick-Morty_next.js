@@ -55,3 +55,15 @@
   text-shadow: 0 0 16px #0b0813;
   box-shadow: -1px 1px 16px 2px #0b0813;
 }
+
+.characterFavorite {
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+
+  padding: 8px;
+  width: 35px;
+  height: 35px;
+  border-top-left-radius: 25px;
+  background-color: #27272e;
+}

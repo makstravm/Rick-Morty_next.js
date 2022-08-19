@@ -8,6 +8,9 @@
     transition: all 0.3s;
     &:hover {
       transform: scale(1.2, 1.2);
+      svg {
+        fill: #1fa101;
+      }
     }
     &:active {
       animation: effectClick 0.2s ease-out;

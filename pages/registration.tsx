@@ -8,7 +8,6 @@ import { registrationFormFields } from "constants/form/registrationFormsFields";
 
 import { registerValidationSchema } from "helpers/schema/registerSchame";
 import { routesUrls } from "constants/routes";
-import { IUser } from "components/Profile/types";
 
 const RegistrationPage = () => {
   const [resError, setResError] = useState<string>("");

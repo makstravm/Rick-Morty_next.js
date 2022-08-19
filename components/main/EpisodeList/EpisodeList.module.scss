@@ -16,6 +16,7 @@
   margin: 1vw;
   text-decoration: none;
   color: #fff;
+  position: relative;
   transition: all 0.3s;
   div {
     font-family: "Plateia";
@@ -38,6 +39,16 @@
     }
     h6 {
       text-shadow: 0 0 16px #00ff04;
+    }
+  }
+  div.characterFavorite {
+    position: absolute;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    right: 25px;
+    div {
+      line-height: 0;
     }
   }
 }

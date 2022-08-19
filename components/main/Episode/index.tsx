@@ -1,14 +1,16 @@
 import { FC, MouseEvent, useContext } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+import { API } from "api";
+import { UserContext } from "context/userContext";
 
 import { routesUrls } from "constants/routes";
 
-import { IEpisodeProps } from "./types";
 import FavoriteBtn from "components/FavoriteBtn";
-import { API } from "api";
-import { useRouter } from "next/router";
-import { UserContext } from "context/userContext";
+
 import { ICharacter } from "../Character/types";
+import { IEpisodeProps } from "./types";
 
 const Episode: FC<IEpisodeProps> = ({
   episodeOne: { id, name, episode, air_date, characters },

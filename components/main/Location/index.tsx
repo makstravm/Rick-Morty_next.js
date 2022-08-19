@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Link from "next/link";
 
 import { routesUrls } from "constants/routes";
 
 import { ILocationProps } from "./types";
+import DetailsList from "components/DetailsList/DetailsList";
 
 const Location: FC<ILocationProps> = ({
   locationOne: { name, type, dimension, residents },
@@ -19,21 +19,11 @@ const Location: FC<ILocationProps> = ({
       <p>
         Dimension<span>{dimension}</span>
       </p>
-      <details>
-        <summary>
-          Residents<span>{`( ${residents.length} )`}</span>
-        </summary>
-        <div>
-          {residents.map(({ id, name }) => (
-            <Link key={id} href={routesUrls.CHARACTER + "/" + id}>
-              <a>
-                {name}
-                <span>;&nbsp;</span>
-              </a>
-            </Link>
-          ))}
-        </div>
-      </details>
+      <DetailsList
+        arr={residents}
+        title="Residents"
+        route={routesUrls.CHARACTER}
+      />
     </div>
   </section>
 );

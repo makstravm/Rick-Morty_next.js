@@ -10,7 +10,8 @@ import { IEpisodesListProps } from "./types";
 import { IEpisodeData } from "../Episode/types";
 import { ICharacter } from "../Character/types";
 
-import styles from "./EpisodeList.module.scss";
+import style from "./EpisodeList.module.scss";
+import FavoriteBtn from "components/FavoriteBtn";
 
 const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
   id,
@@ -21,8 +22,7 @@ const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
 
   const route = useRouter();
 
-  const isFavorite =
-    user && user?.favorites?.characters.some((c) => c.id === id);
+  const isFavorite = user && user?.favorites?.episodes.some((c) => c.id === id);
 
   const handleFavoiteCharacterClick = async (
     e: MouseEvent<HTMLButtonElement>
@@ -33,24 +33,19 @@ const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
       return route.push(routesUrls.LOGIN);
     }
 
-    let updatedCharacters: Pick<ICharacter, "id" | "name">[] | [] = [];
+    let updatedEpisodes: Pick<ICharacter, "id" | "name">[] | [] = [];
 
     if (isFavorite) {
-      updatedCharacters = user?.favorites?.characters.filter(
-        (c) => c.id !== id
-      );
+      updatedEpisodes = user?.favorites?.episodes.filter((c) => c.id !== id);
     } else {
-      updatedCharacters = [
-        ...user.favorites.characters,
-        { id: id, name: name },
-      ];
+      updatedEpisodes = [...user.favorites.episodes, { id: id, name: name }];
     }
 
     const newUser = {
       ...user,
       favorites: {
         ...user.favorites,
-        characters: updatedCharacters,
+        episodes: updatedEpisodes,
       },
     };
 
@@ -61,18 +56,24 @@ const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
 
   return (
     <Link key={id} href={`${routesUrls.EPISODE}/${id}`}>
-      <a className={styles.episodeLink}>
+      <a className={style.episodeLink}>
         <div>{episode.slice(-2)}</div>
         <h6>{name}</h6>
+        <div className={style.characterFavorite}>
+          <FavoriteBtn
+            isFavorite={isFavorite}
+            handleClick={handleFavoiteCharacterClick}
+          />
+        </div>
       </a>
     </Link>
   );
 };
 
 const EpisodesList: FC<IEpisodesListProps> = ({ episodes }) => (
-  <section className={`container ${styles.episodeList}`}>
+  <section className={`container ${style.episodeList}`}>
     <h4>Season {episodes?.[0].episode.slice(1, 3)}</h4>
-    <div className={styles.episodeBox}>
+    <div className={style.episodeBox}>
       {episodes.map((episode) => (
         <EpisodeItem key={episode.id} {...episode} />
       ))}

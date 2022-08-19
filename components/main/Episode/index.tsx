@@ -11,6 +11,7 @@ import FavoriteBtn from "components/FavoriteBtn";
 
 import { ICharacter } from "../Character/types";
 import { IEpisodeProps } from "./types";
+import DetailsList from "components/DetailsList/DetailsList";
 
 const Episode: FC<IEpisodeProps> = ({
   episodeOne: { id, name, episode, air_date, characters },
@@ -72,21 +73,11 @@ const Episode: FC<IEpisodeProps> = ({
         <p>
           Airdata<span>{air_date}</span>
         </p>
-        <details>
-          <summary>
-            Characters<span>{`( ${characters.length} )`}</span>
-          </summary>
-          <div>
-            {characters.map(({ id, name }) => (
-              <Link key={id} href={routesUrls.CHARACTER + "/" + id}>
-                <a>
-                  {name}
-                  <span>;&nbsp;</span>
-                </a>
-              </Link>
-            ))}
-          </div>
-        </details>
+        <DetailsList
+          title="Characters"
+          route={routesUrls.CHARACTER}
+          arr={characters}
+        />
       </div>
     </section>
   );

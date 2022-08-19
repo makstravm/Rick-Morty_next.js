@@ -1,16 +1,18 @@
+import { MouseEvent, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+import { API } from "api";
+import { UserContext } from "context/userContext";
 
 import { routesUrls } from "constants/routes";
+
+import FavoriteBtn from "components/FavoriteBtn";
 
 import { ICharacter, ICharacterProps } from "./types";
 
 import style from "./Character.module.scss";
-import FavoriteBtn from "components/FavoriteBtn";
-import { MouseEvent, useContext } from "react";
-import { UserContext } from "context/userContext";
-import { useRouter } from "next/router";
-import { API } from "api";
 
 const Character = ({ character }: ICharacterProps) => {
   const { user, setUser } = useContext(UserContext);

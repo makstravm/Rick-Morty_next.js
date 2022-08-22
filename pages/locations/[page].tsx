@@ -38,12 +38,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { data } = await gql(
+  const {
+    data: { locations },
+  } = await gql(
     `query($page: Int) {
       locations(page: $page) {
         info {
@@ -60,14 +62,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     { page: Number(context.params?.page) }
   );
 
-  if (!data) {
+  if (!locations.results.length) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: data.locations,
+    props: locations,
   };
 };
 

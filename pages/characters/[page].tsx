@@ -42,7 +42,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { data } = await gql(
+  const {
+    data: { characters },
+  } = await gql(
     `query($page: Int) {
       characters(page: $page) {
         info {
@@ -60,14 +62,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     { page: Number(context.params?.page) }
   );
 
-  if (!data) {
+  if (!characters.results.length) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: data.characters,
+    props: characters,
   };
 };
 

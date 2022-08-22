@@ -19,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     { filter: { episode: context.params?.season } }
   );
 
-  if (!results) {
+  if (!results.length) {
     return {
       notFound: true,
     };

@@ -8,20 +8,25 @@ import { UserContext } from "context/userContext";
 
 import { routesUrls } from "constants/routes";
 
+import DetailsList from "components/DetailsList/DetailsList";
 import FavoriteBtn from "components/FavoriteBtn";
+import { IFavoritesUser } from "components/Profile/types";
 
 import { ICharacter, ICharacterProps } from "./types";
 
 import style from "./Character.module.scss";
-import DetailsList from "components/DetailsList/DetailsList";
 
 const Character = ({ character }: ICharacterProps) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, favoritesUser, setFavoritesUser } = useContext(UserContext);
 
   const route = useRouter();
 
   const isFavorite =
-    user && user?.favorites?.characters.some((c) => c.id === character.id);
+    (user &&
+      favoritesUser?.favorites?.characters.some(
+        (c) => c.id === character.id
+      )) ||
+    null;
 
   const handleFavoiteCharacterClick = async (
     e: MouseEvent<HTMLButtonElement>
@@ -35,27 +40,31 @@ const Character = ({ character }: ICharacterProps) => {
     let updatedCharacters: Pick<ICharacter, "id" | "name">[] | [] = [];
 
     if (isFavorite) {
-      updatedCharacters = user?.favorites?.characters.filter(
-        (c) => c.id !== character.id
-      );
+      updatedCharacters =
+        favoritesUser?.favorites?.characters.filter(
+          (c) => c.id !== character.id
+        ) || [];
     } else {
       updatedCharacters = [
-        ...user.favorites.characters,
-        { id: character.id, name: character.name },
+        ...(favoritesUser?.favorites?.characters || []),
+        {
+          id: character.id,
+          name: character.name,
+        },
       ];
     }
 
-    const newUser = {
-      ...user,
+    const updatedFavoritesUser: IFavoritesUser = {
+      ...favoritesUser,
       favorites: {
-        ...user.favorites,
+        episodes: favoritesUser?.favorites?.episodes || [],
         characters: updatedCharacters,
       },
     };
 
-    API.put(`users/${user.id}`, newUser)
-      .then((res) => setUser(res))
-      .catch(() => setUser(user));
+    API.put(`favoritesUser/${user.id}`, updatedFavoritesUser)
+      .then((res) => setFavoritesUser(res))
+      .catch(() => setFavoritesUser(favoritesUser));
   };
 
   return (

@@ -12,7 +12,7 @@ import { IUserContext } from "./types";
 
 export const UserContext = createContext<IUserContext>({
   user: null,
-  favoritesUser: null,
+  favoritesUser: { id: null, favorites: { characters: [], episodes: [] } },
   setFavoritesUser: () => {},
 });
 
@@ -23,9 +23,10 @@ export const UserContextProvider: FC<{ children: ReactNode }> = ({
 
   const [user, setUser] = useState<IUser | null>(null);
 
-  const [favoritesUser, setFavoritesUser] = useState<IFavoritesUser | null>(
-    null
-  );
+  const [favoritesUser, setFavoritesUser] = useState<IFavoritesUser>({
+    id: null,
+    favorites: { characters: [], episodes: [] },
+  });
 
   useEffect(() => {
     if (data) {

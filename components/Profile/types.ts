@@ -26,6 +26,6 @@ export interface IProfileProps {
 }
 
 export interface IFavoritesUser {
-  id: number;
+  id: number | null;
   favorites: IFavorites;
 }

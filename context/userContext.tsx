@@ -7,13 +7,13 @@ import Preloader from "components/Preloader";
 
 import { jwtDecode } from "helpers/jwtDecode";
 
-import { IFavoriteUser, IUser } from "components/Profile/types";
+import { IFavoritesUser, IUser } from "components/Profile/types";
 import { IUserContext } from "./types";
 
 export const UserContext = createContext<IUserContext>({
   user: null,
-  favoriteUser: null,
-  setFavoriteUser: () => {},
+  favoritesUser: null,
+  setFavoritesUser: () => {},
 });
 
 export const UserContextProvider: FC<{ children: ReactNode }> = ({
@@ -23,15 +23,17 @@ export const UserContextProvider: FC<{ children: ReactNode }> = ({
 
   const [user, setUser] = useState<IUser | null>(null);
 
-  const [favoriteUser, setFavoriteUser] = useState<IFavoriteUser | null>(null);
+  const [favoritesUser, setFavoritesUser] = useState<IFavoritesUser | null>(
+    null
+  );
 
   useEffect(() => {
     if (data) {
       const { sub } = jwtDecode(data.accessToken as string);
 
       API.get<IUser>(`users/${sub}`).then((res) => setUser(res));
-      API.get<IFavoriteUser>(`favoriteUser/${sub}`).then((res) =>
-        setFavoriteUser(res)
+      API.get<IFavoritesUser>(`favoritesUser/${sub}`).then((res) =>
+        setFavoritesUser(res)
       );
     }
   }, [data]);
@@ -41,7 +43,7 @@ export const UserContextProvider: FC<{ children: ReactNode }> = ({
   }
 
   return (
-    <UserContext.Provider value={{ user, favoriteUser, setFavoriteUser }}>
+    <UserContext.Provider value={{ user, favoritesUser, setFavoritesUser }}>
       {children}
     </UserContext.Provider>
   );

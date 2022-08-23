@@ -22,9 +22,10 @@ export interface IFavorites {
 
 export interface IProfileProps {
   user: IUser;
+  favoritesUser: IFavoritesUser;
 }
 
-export interface IFavoriteUser {
+export interface IFavoritesUser {
   id: number;
   favorites: IFavorites;
 }

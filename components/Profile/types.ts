@@ -24,7 +24,7 @@ export interface IProfileProps {
   user: IUser;
 }
 
-export interface IFavoritesUser {
+export interface IFavoriteUser {
   id: number;
   favorites: IFavorites;
 }

@@ -1,6 +1,7 @@
-import { IUser } from "components/Profile/types";
+import { IFavoriteUser, IUser } from "components/Profile/types";
 
 export interface IUserContext {
   user: IUser | null;
-  setUser: (data: IUser) => void;
+  favoriteUser: IFavoriteUser | null;
+  setFavoriteUser: (data: IFavoriteUser) => void;
 }

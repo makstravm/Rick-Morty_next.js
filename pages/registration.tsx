@@ -8,6 +8,7 @@ import { registrationFormFields } from "constants/form/registrationFormsFields";
 
 import { registerValidationSchema } from "helpers/schema/registerSchame";
 import { routesUrls } from "constants/routes";
+import { IFavoritesUser, IResponseUser, IUser } from "components/Profile/types";
 
 const RegistrationPage = () => {
   const [resError, setResError] = useState<string>("");
@@ -16,15 +17,24 @@ const RegistrationPage = () => {
 
   const submitForm = async (dataForm: Record<string, string>) => {
     try {
-      const data = await API.post("register", {
-        ...dataForm,
+      const dataUser = await API.post<Record<string, string>, IResponseUser>(
+        "register",
+        {
+          ...dataForm,
+        }
+      );
+
+      const dataFavorites = await API.post<
+        Omit<IFavoritesUser, "id">,
+        IFavoritesUser
+      >("favoritesUser", {
         favorites: {
           characters: [],
           episodes: [],
         },
       });
 
-      if (data) {
+      if (dataUser && dataFavorites) {
         router.push(routesUrls.LOGIN);
       }
     } catch (e) {

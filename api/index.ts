@@ -20,8 +20,8 @@ export class API {
   static async request<G, T>(
     endpoints: string,
     requestMethod: string,
-    requestBody?: T
-  ): Promise<G> {
+    requestBody?: G
+  ): Promise<T> {
     const response = await fetch(`${process.env.apiUrl}/${endpoints}`, {
       method: requestMethod,
       headers: {
@@ -45,8 +45,8 @@ export class API {
     return resolved;
   }
 
-  static async post<T>(endpoints: string, requestBody: T) {
-    const resolved = await this.request(endpoints, "POST", requestBody);
+  static async post<G, T>(endpoints: string, requestBody: G) {
+    const resolved = await this.request<G, T>(endpoints, "POST", requestBody);
 
     return resolved;
   }

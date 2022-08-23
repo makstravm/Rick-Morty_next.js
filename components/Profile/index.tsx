@@ -11,8 +11,8 @@ import { IProfileProps } from "./types";
 import style from "./Profile.module.scss";
 
 const Profile: FC<IProfileProps> = ({
-  user: {
-    name,
+  user: { name },
+  favoritesUser: {
     favorites: { characters, episodes },
   },
 }) => (

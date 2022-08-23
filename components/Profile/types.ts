@@ -1,5 +1,6 @@
 import { ICharacter } from "components/main/Character/types";
 import { IEpisodeData } from "components/main/Episode/types";
+import { StringLocale } from "yup/lib/locale";
 
 export interface IUser {
   id: number;
@@ -7,7 +8,11 @@ export interface IUser {
   name: string;
   confirmPassword: string;
   email: string;
-  favorites: IFavorites;
+}
+
+export interface IResponseUser {
+  accessToken: string;
+  user: IUser;
 }
 
 export interface IFavorites {
@@ -17,4 +22,10 @@ export interface IFavorites {
 
 export interface IProfileProps {
   user: IUser;
+  favoritesUser: IFavoritesUser;
+}
+
+export interface IFavoritesUser {
+  id: number | null;
+  favorites: IFavorites;
 }

@@ -6,10 +6,12 @@ import { useRouter } from "next/router";
 import { routesUrls } from "constants/routes";
 
 import FavoriteBtn from "components/FavoriteBtn";
+
 import { UserContext } from "context/userContext";
 
 import { API } from "api";
 
+import { IFavoritesUser } from "components/Profile/types";
 import { ICharactersListProps } from "./types";
 import { ICharacter } from "../Character/types";
 
@@ -20,12 +22,12 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
   image,
   name,
 }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, favoritesUser, setFavoritesUser } = useContext(UserContext);
 
   const route = useRouter();
 
   const isFavorite =
-    user && user?.favorites?.characters.some((c) => c.id === id);
+    user && favoritesUser?.favorites?.characters.some((c) => c.id === id);
 
   const handleFavoiteCharacterClick = async (
     e: MouseEvent<HTMLButtonElement>
@@ -39,24 +41,29 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
     let updatedCharacters: Pick<ICharacter, "id" | "name">[] | [] = [];
 
     if (isFavorite) {
-      updatedCharacters = user?.favorites?.characters.filter(
-        (c) => c.id !== id
-      );
+      updatedCharacters =
+        favoritesUser?.favorites?.characters.filter((c) => c.id !== id) || [];
     } else {
-      updatedCharacters = [...user.favorites.characters, { id, name }];
+      updatedCharacters = [
+        ...(favoritesUser?.favorites?.characters || []),
+        {
+          id: id,
+          name: name,
+        },
+      ];
     }
 
-    const newUser = {
-      ...user,
+    const updatedFavoritesUser: IFavoritesUser = {
+      ...favoritesUser,
       favorites: {
-        ...user.favorites,
+        episodes: favoritesUser?.favorites?.episodes || [],
         characters: updatedCharacters,
       },
     };
 
-    API.put(`users/${user.id}`, newUser)
-      .then((res) => setUser(res))
-      .catch(() => setUser(user));
+    API.put(`favoritesUser/${user.id}`, updatedFavoritesUser)
+      .then((res) => setFavoritesUser(res))
+      .catch(() => setFavoritesUser(favoritesUser));
   };
 
   return (

@@ -1,5 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 import { IDataListProps } from "./types";
 
 const DetailsList: FC<IDataListProps> = ({ title, arr, route }) => {
@@ -10,11 +12,13 @@ const DetailsList: FC<IDataListProps> = ({ title, arr, route }) => {
         <span>{`( ${arr.length} )`}</span>
       </summary>
       <div>
-        {arr.map(({ id, name }) => (
+        {arr.map(({ id, name, image }) => (
           <Link key={id} href={route + "/" + id}>
             <a>
-              {name}
-              <span>;&nbsp;</span>
+              {image && (
+                <Image src={image} width="35px" height="35px" alt={name} />
+              )}
+              <span className="details-name">{name}</span>
             </a>
           </Link>
         ))}

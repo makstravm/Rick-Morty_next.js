@@ -5,7 +5,7 @@ export interface ILocation {
   name: string;
   type: string;
   dimension: string;
-  residents: Pick<ICharacter, "id" | "name">[];
+  residents: Pick<ICharacter, "id" | "name" | "name">[];
 }
 export interface ILocationProps {
   locationOne: ILocation;

@@ -5,7 +5,7 @@ export interface IEpisodeData {
   name: string;
   air_date: string;
   episode: string;
-  characters: Pick<ICharacter, "id" | "name">[];
+  characters: Pick<ICharacter, "id" | "name" | "image">[];
 }
 
 export interface IEpisodeProps {

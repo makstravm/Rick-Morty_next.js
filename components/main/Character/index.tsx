@@ -22,11 +22,8 @@ const Character = ({ character }: ICharacterProps) => {
   const route = useRouter();
 
   const isFavorite =
-    (user &&
-      favoritesUser?.favorites?.characters.some(
-        (c) => c.id === character.id
-      )) ||
-    null;
+    user &&
+    favoritesUser?.favorites?.characters.some((c) => c.id === character.id);
 
   const handleFavoiteCharacterClick = async (
     e: MouseEvent<HTMLButtonElement>

@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         residents {
           id
           name
+          image
         }
       }
     }`,

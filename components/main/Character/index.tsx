@@ -34,19 +34,20 @@ const Character = ({ character }: ICharacterProps) => {
       return route.push(routesUrls.LOGIN);
     }
 
-    let updatedCharacters: Pick<ICharacter, "id" | "name">[] | [] = [];
+    let updatedCharacters: Pick<ICharacter, "id" | "name" | "image">[] | [] =
+      [];
 
     if (isFavorite) {
-      updatedCharacters =
-        favoritesUser?.favorites?.characters.filter(
-          (c) => c.id !== character.id
-        ) || [];
+      updatedCharacters = favoritesUser.favorites.characters.filter(
+        (c) => c.id !== character.id
+      );
     } else {
       updatedCharacters = [
         ...(favoritesUser?.favorites?.characters || []),
         {
           id: character.id,
           name: character.name,
+          image: character.image,
         },
       ];
     }

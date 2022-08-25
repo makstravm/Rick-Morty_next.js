@@ -12,7 +12,6 @@ import { IProfileProps } from "./types";
 import style from "./Profile.module.scss";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { UserContext } from "context/userContext";
 import Preloader from "components/Preloader";
 
 const Profile: FC<IProfileProps> = ({

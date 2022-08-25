@@ -38,17 +38,19 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
       return route.push(routesUrls.LOGIN);
     }
 
-    let updatedCharacters: Pick<ICharacter, "id" | "name">[] | [] = [];
+    let updatedCharacters: Pick<ICharacter, "id" | "name" | "image">[] | [] =
+      [];
 
     if (isFavorite) {
       updatedCharacters =
         favoritesUser?.favorites?.characters.filter((c) => c.id !== id) || [];
     } else {
       updatedCharacters = [
-        ...(favoritesUser?.favorites?.characters || []),
+        ...favoritesUser.favorites.characters,
         {
           id: id,
           name: name,
+          image: image,
         },
       ];
     }

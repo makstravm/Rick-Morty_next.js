@@ -247,11 +247,11 @@ ul.pagination {
     }
   }
   details {
-    display: inline-block;
+    display: block;
     a {
       display: flex;
       align-items: center;
-      margin-top: 15px;
+      margin-bottom: 15px;
       letter-spacing: 1px;
       font-size: 1.8rem;
       padding-left: 0;

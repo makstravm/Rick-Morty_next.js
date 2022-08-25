@@ -17,7 +17,7 @@ export interface IResponseUser {
 
 export interface IFavorites {
   episodes: Pick<IEpisodeData, "id" | "name">[] | [];
-  characters: Pick<ICharacter, "id" | "name">[] | [];
+  characters: Pick<ICharacter, "id" | "name" | "image">[] | [];
 }
 
 export interface IProfileProps {

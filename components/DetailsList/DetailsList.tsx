@@ -18,6 +18,7 @@ const DetailsList: FC<IDataListProps> = ({ title, arr, route }) => {
               {image && (
                 <Image src={image} width="35px" height="35px" alt={name} />
               )}
+              <span className="details-name">{name}</span>
             </a>
           </Link>
         ))}

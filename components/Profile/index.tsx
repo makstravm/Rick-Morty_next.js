@@ -1,8 +1,9 @@
 import { FC } from "react";
 import Image from "next/image";
 
-import { FavoriteList } from "./FavoriteList";
 import { routesUrls } from "constants/routes";
+
+import DetailsList from "components/DetailsList/DetailsList";
 
 import { randomLinkUserImage } from "helpers/randomUserImg";
 
@@ -26,17 +27,15 @@ const Profile: FC<IProfileProps> = ({
       </h6>
       <p>My Favorites</p>
       <div className={style.boxFavorites}>
-        <FavoriteList
-          list={characters}
+        <DetailsList
+          arr={characters}
           title="Characters"
-          pathToList={`${routesUrls.CHARACTERS}/1`}
-          pathToItem={routesUrls.CHARACTER}
+          route={routesUrls.CHARACTER}
         />
-        <FavoriteList
-          list={episodes}
+        <DetailsList
+          arr={episodes}
           title="Episodes"
-          pathToList={routesUrls.SEASONS}
-          pathToItem={routesUrls.EPISODE}
+          route={routesUrls.EPISODE}
         />
       </div>
     </div>

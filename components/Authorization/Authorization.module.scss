@@ -87,18 +87,27 @@
     margin: 40px 20px;
     font-weight: bold;
   }
-  .resError {
+  .resError,
+  .signUpSuccess {
     width: 60%;
     font-size: 1.4em;
     line-height: normal;
-    color: #851818;
     padding: 15px;
     text-align: center;
+    margin-bottom: 15px;
+    border-radius: 15px;
+  }
+  .resError {
+    color: #851818;
     border: 1px solid #851818;
     box-shadow: 0 0 10px 0px #c68e8e;
     background-color: #fdcece;
-    margin-bottom: 15px;
-    border-radius: 15px;
+  }
+  .signUpSuccess {
+    color: #04d816;
+    border: 1px solid #98ff6f;
+    box-shadow: 0 0 10px 0px #93f38e;
+    background-color: #e3ffe0;
   }
 }
 

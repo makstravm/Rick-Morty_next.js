@@ -31,6 +31,8 @@ export const Authorization: FC<IAuthorizationProps> = ({
     resolver: yupResolver(validSchema),
   });
 
+  const { query } = useRouter();
+
   const submitForm = (dataForm: Record<string, string>) =>
     handleSubmitForm(dataForm);
 
@@ -64,6 +66,11 @@ export const Authorization: FC<IAuthorizationProps> = ({
           >
             <h2>{checkTitleText(pageLogin)}</h2>
             {!!error && <div className={style.resError}>{error}</div>}
+            {!error && query?.signup && (
+              <div className={style.signUpSuccess}>
+                Registration successfull
+              </div>
+            )}
             {initialFieldsForm?.map(({ id, name, type }) => (
               <div
                 className={

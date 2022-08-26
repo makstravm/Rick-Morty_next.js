@@ -35,7 +35,10 @@ const RegistrationPage = () => {
       });
 
       if (dataUser && dataFavorites) {
-        router.push(routesUrls.LOGIN);
+        router.push({
+          pathname: routesUrls.LOGIN,
+          query: { signup: "success" },
+        });
       }
     } catch (e) {
       setResError(e as string);

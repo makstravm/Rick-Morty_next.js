@@ -35,7 +35,10 @@ const CharachterItem: FC<Pick<ICharacter, "image" | "id" | "name">> = ({
     e.preventDefault();
 
     if (!user) {
-      return route.push(routesUrls.LOGIN);
+      return route.push({
+        pathname: routesUrls.LOGIN,
+        query: { backpath: route.pathname, page: route.query.page },
+      });
     }
 
     let updatedCharacters: Pick<ICharacter, "id" | "name" | "image">[] | [] =

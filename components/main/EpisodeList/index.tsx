@@ -33,7 +33,10 @@ const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
     e.preventDefault();
 
     if (!user) {
-      return route.push(routesUrls.LOGIN);
+      return route.push({
+        pathname: routesUrls.LOGIN,
+        query: { backpath: route.pathname, page: route.query.page },
+      });
     }
 
     let updatedEpisodes: Pick<ICharacter, "id" | "name">[] | [] = [];

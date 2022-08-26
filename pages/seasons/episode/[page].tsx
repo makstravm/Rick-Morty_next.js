@@ -23,10 +23,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     {}
   );
 
-  let paths: { params: { episode: string } }[] = [];
+  let paths: { params: { page: string } }[] = [];
 
   for (let i = 1; i <= info.count; i++) {
-    paths = [...paths, { params: { episode: i.toString() } }];
+    paths = [...paths, { params: { page: i.toString() } }];
   }
 
   return {
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
       }
     }`,
-    { id: context.params?.episode }
+    { id: context.params?.page }
   );
 
   if (!episode) {

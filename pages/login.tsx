@@ -17,7 +17,14 @@ const LogInPage = () => {
   const submitForm = (data: Record<string, string>) =>
     signIn("credentials", { ...data, redirect: false }).then((res) => {
       if (res?.ok) {
-        router.push(routesUrls.HOME);
+        const path = router?.query?.backpath
+          ? {
+              pathname: router?.query?.backpath as string,
+              query: { page: router?.query?.page },
+            }
+          : routesUrls.HOME;
+
+        router.push(path);
       } else {
         setResError(res?.error as string);
       }

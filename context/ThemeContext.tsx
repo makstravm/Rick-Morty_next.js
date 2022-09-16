@@ -13,7 +13,16 @@ export const ThemeContext = createContext<IThemeContext>({
 const ThemeContextWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<typeof DARK | typeof LIGHT>(DARK);
 
-  const changeTheme = (theme: typeof LIGHT | typeof DARK) => setTheme(theme);
+  const changeTheme = (theme: typeof LIGHT | typeof DARK) => {
+    localStorage.theme = theme;
+    setTheme(theme);
+  };
+
+  useEffect(() => {
+    if (localStorage?.theme) {
+      setTheme(localStorage.theme);
+    }
+  }, []);
 
   useEffect(() => {
     if (theme === DARK) {

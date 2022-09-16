@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 import { routesUrls } from "constants/routes";
-import { UserContext } from "context/userContext";
+import { UserContext } from "context/UserContext";
 
 import style from "./UserPanel.module.scss";
 import { signOut } from "next-auth/react";

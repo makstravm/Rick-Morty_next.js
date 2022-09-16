@@ -17,9 +17,9 @@ const ThemeContextWrapper: FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     if (theme === DARK) {
-      document.body.classList.remove("white-mode");
+      document.body.classList.remove("light-mode");
     } else {
-      document.body.classList.add("white-mode");
+      document.body.classList.add("light-mode");
     }
   }, [theme]);
 

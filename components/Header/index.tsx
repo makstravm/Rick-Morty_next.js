@@ -10,13 +10,10 @@ import UserPanel from "./UserPanel";
 import logo from "public/logo.png";
 import { useContext } from "react";
 import { ThemeContext } from "context/ThemeContext";
+import ToggleTheme from "./ToggleTheme";
 
 const Header = () => {
   const { pathname } = useRouter();
-
-  const { changeTheme } = useContext(ThemeContext);
-
-  changeTheme("light");
 
   return (
     <header>
@@ -45,6 +42,7 @@ const Header = () => {
               </a>
             </Link>
           ))}
+          <ToggleTheme />
           <UserPanel />
         </div>
       </nav>

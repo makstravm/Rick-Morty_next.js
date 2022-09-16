@@ -5,3 +5,8 @@ export interface IUserContext {
   favoritesUser: IFavoritesUser;
   setFavoritesUser: (data: IFavoritesUser) => void;
 }
+
+export interface IThemeContext {
+  theme: "dark" | "light";
+  changeTheme: (theme: "dark" | "light") => void;
+}

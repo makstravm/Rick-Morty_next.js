@@ -7,7 +7,7 @@ import { routesUrls } from "constants/routes";
 
 import FavoriteBtn from "components/FavoriteBtn";
 
-import { UserContext } from "context/userContext";
+import { UserContext } from "context/UserContext";
 
 import { API } from "api";
 

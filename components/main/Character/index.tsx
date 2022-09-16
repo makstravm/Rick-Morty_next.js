@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { API } from "api";
-import { UserContext } from "context/userContext";
+import { UserContext } from "context/UserContext";
 
 import { routesUrls } from "constants/routes";
 

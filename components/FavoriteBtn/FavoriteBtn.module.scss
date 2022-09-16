@@ -22,6 +22,11 @@
     stroke: #2eff00;
     transition: all 0.3s;
   }
+  &.light {
+    svg {
+      stroke: #082c00;
+    }
+  }
 }
 
 @keyframes effectClick {

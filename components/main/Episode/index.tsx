@@ -67,9 +67,7 @@ const Episode: FC<IEpisodeProps> = ({
     <section className={`container`}>
       <h4>
         Episode {episode.slice(-2)}
-        <span
-          style={{ display: "block", fontSize: "1.4rem", color: "#ececec" }}
-        >
+        <span style={{ display: "block", fontSize: "1.4rem" }}>
           ( Season {episode.slice(1, 3)} )
           <FavoriteBtn
             isFavorite={isFavorite}

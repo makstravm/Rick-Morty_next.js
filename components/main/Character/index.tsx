@@ -15,9 +15,13 @@ import { IFavoritesUser } from "components/Profile/types";
 import { ICharacter, ICharacterProps } from "./types";
 
 import style from "./Character.module.scss";
+import { ThemeContext } from "context/ThemeContext";
+import { ThemeMode } from "constants/theme";
 
 const Character = ({ character }: ICharacterProps) => {
   const { user, favoritesUser, setFavoritesUser } = useContext(UserContext);
+
+  const { theme } = useContext(ThemeContext);
 
   const route = useRouter();
 
@@ -69,7 +73,11 @@ const Character = ({ character }: ICharacterProps) => {
   };
 
   return (
-    <section className={`${style.character} container`}>
+    <section
+      className={`${style.character} ${
+        theme === ThemeMode.LIGHT && style.light
+      } container`}
+    >
       <div className={style.boxImg}>
         <Image
           width={250}

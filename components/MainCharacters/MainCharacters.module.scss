@@ -5,7 +5,6 @@
 .character {
   display: flex;
   align-items: center;
-  color: #fff;
   font-size: 1.8rem;
   line-height: 1.8rem;
   font-family: "Plateia";
@@ -24,7 +23,6 @@
   }
   &:hover {
     span {
-      text-shadow: 0 0 16px #00ff04;
       font-size: 2rem;
     }
     .imgBox {
@@ -42,4 +40,7 @@
   box-shadow: 0px 0px 7px 1px #2eff00c4;
   border-radius: 15px;
   transition: all 0.3s;
+  &.light {
+    box-shadow: 0px 0px 7px 1px #044405;
+  }
 }

@@ -14,6 +14,8 @@ import { ICharacter } from "../Character/types";
 import { IFavoritesUser } from "components/Profile/types";
 
 import style from "./EpisodeList.module.scss";
+import { ThemeContext } from "context/ThemeContext";
+import { ThemeMode } from "constants/theme";
 
 const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
   id,
@@ -21,6 +23,8 @@ const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
   episode,
 }) => {
   const { user, favoritesUser, setFavoritesUser } = useContext(UserContext);
+
+  const { theme } = useContext(ThemeContext);
 
   const route = useRouter();
 
@@ -69,7 +73,11 @@ const EpisodeItem: FC<Pick<IEpisodeData, "name" | "id" | "episode">> = ({
 
   return (
     <Link key={id} href={`${routesUrls.EPISODE}/${id}`}>
-      <a className={style.episodeLink}>
+      <a
+        className={`${style.episodeLink} ${
+          theme === ThemeMode.LIGHT && style.light
+        }`}
+      >
         <div>{episode.slice(-2)}</div>
         <h6>{name}</h6>
         <div className={style.characterFavorite}>

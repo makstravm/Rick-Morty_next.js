@@ -11,6 +11,29 @@
     padding-bottom: 20px;
     -webkit-text-stroke: 1px rgb(0, 255, 26);
   }
+  &.light {
+    h3 {
+      -webkit-text-stroke: 2px rgb(6, 165, 22);
+    }
+    .boxImg {
+      box-shadow: 0px 0px 12px 4px #044405;
+    }
+    .characterFavorite {
+      background-color: #ebebeb;
+    }
+    .status {
+      background-color: #ebebeb;
+      color: rgb(41, 41, 41);
+    }
+    .alive {
+      text-shadow: 0 0 16px #008d02;
+      box-shadow: -1px 1px 16px 2px #008d02;
+    }
+    .dead {
+      text-shadow: 0 0 16px #910000;
+      box-shadow: -1px 1px 16px 2px #910000;
+    }
+  }
 }
 
 .description {
@@ -60,7 +83,6 @@
   position: absolute;
   bottom: 0;
   right: 0px;
-
   padding: 8px;
   width: 35px;
   height: 35px;

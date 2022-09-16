@@ -1,17 +1,26 @@
-import Link from "next/link";
 import { useContext } from "react";
+import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 import { routesUrls } from "constants/routes";
 import { UserContext } from "context/UserContext";
+import { ThemeMode } from "constants/theme";
 
 import style from "./UserPanel.module.scss";
-import { signOut } from "next-auth/react";
+import { ThemeContext } from "context/ThemeContext";
+
 const UserPanel = () => {
   const { user } = useContext(UserContext);
 
+  const { theme } = useContext(ThemeContext);
+
   if (user) {
     return (
-      <div className={style.userPanel + " " + style.userLink}>
+      <div
+        className={`${style.userPanel} ${style.userLink} ${
+          theme === ThemeMode.LIGHT && style.light
+        }`}
+      >
         <Link href={`${routesUrls.PROFILE}/${user.id}`}>
           <a>Hi, {user?.name}</a>
         </Link>
@@ -47,7 +56,11 @@ const UserPanel = () => {
   }
 
   return (
-    <div className={style.userPanel}>
+    <div
+      className={`${style.userPanel} ${
+        theme === ThemeMode.LIGHT && style.light
+      }`}
+    >
       <Link href={routesUrls.LOGIN}>
         <a>Sign In</a>
       </Link>

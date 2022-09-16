@@ -1,16 +1,19 @@
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.scss";
-import { UserContextProvider } from "context/userContext";
+import { UserContextProvider } from "context/UserContext";
+import ThemeContextWrapper from "context/ThemeContext";
 
 const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) => (
   <SessionProvider session={session}>
-    <UserContextProvider>
-      <Component {...pageProps} />
-    </UserContextProvider>
+    <ThemeContextWrapper>
+      <UserContextProvider>
+        <Component {...pageProps} />
+      </UserContextProvider>
+    </ThemeContextWrapper>
   </SessionProvider>
 );
 

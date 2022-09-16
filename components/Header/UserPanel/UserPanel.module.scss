@@ -1,12 +1,11 @@
 .userPanel {
-  padding: 0 0 0 25px;
+  padding: 0px;
   display: flex;
   align-items: center;
   &.userLink {
     a {
       border: none;
       &:hover {
-        // box-shadow: none;
         background-color: transparent;
         text-shadow: 0 0 5px #00ff04;
         color: #e8e8e8;
@@ -29,7 +28,7 @@
     &:hover {
       text-shadow: 0 0 12px #00ff04;
       box-shadow: 0px 0px 8px 0px #1c8c04;
-      background-color: #222225;
+      background-color: transparent;
     }
   }
 
@@ -48,6 +47,28 @@
       &:hover {
         fill: #00ff04;
       }
+    }
+  }
+  &.light {
+    &.userLink {
+      a {
+        color: #0a0a0a;
+      }
+    }
+    a {
+      color: #0a0a0a;
+      &:hover {
+        box-shadow: 0px 0px 8px 0px #115a00;
+        text-shadow: 0 0 5px #044405;
+      }
+    }
+  }
+}
+
+.light {
+  &.userLink {
+    a {
+      color: #0a0a0a;
     }
   }
 }

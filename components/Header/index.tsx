@@ -8,6 +8,9 @@ import { navigation } from "constants/navigation";
 import UserPanel from "./UserPanel";
 
 import logo from "public/logo.png";
+import { useContext } from "react";
+import { ThemeContext } from "context/ThemeContext";
+import ToggleTheme from "./ToggleTheme";
 
 const Header = () => {
   const { pathname } = useRouter();
@@ -30,11 +33,16 @@ const Header = () => {
                   : path
               }`}
             >
-              <a className={`link ${pathname === path ? "--active" : ""}`}>
+              <a
+                className={`link ${
+                  pathname.split("/")[1] === path.slice(1) ? "--active" : ""
+                }`}
+              >
                 {title}
               </a>
             </Link>
           ))}
+          <ToggleTheme />
           <UserPanel />
         </div>
       </nav>

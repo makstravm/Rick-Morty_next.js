@@ -7,9 +7,94 @@ body {
   @extend %monts-400;
   font-size: 10px;
   line-height: 10px;
-  color: #fff;
-  background-color: #27272e;
+  color: $font-dark;
+  background-color: $background-color-dark;
   height: 100%;
+  a {
+    color: $font-dark;
+    &:hover {
+      text-shadow: 0 0 16px $lights-around-dark;
+    }
+    &.--active {
+      text-shadow: 0 0 16px $lights-around-dark;
+    }
+  }
+}
+
+.light-mode {
+  color: $font-light;
+  background-color: $background-color-light;
+  main {
+    background-color: $background-color-light;
+  }
+  header {
+    background-color: $header-bgc-light;
+    box-shadow: 3px 5px 20px 0px $lights-around-light;
+  }
+  a {
+    color: $font-light;
+    &:hover {
+      text-shadow: 0 0 16px $lights-around-light;
+    }
+    &.--active {
+      text-shadow: 0 0 16px $lights-around-light;
+    }
+  }
+  footer {
+    background-color: $footer-bgc-light;
+  }
+  .characters-list {
+    a {
+      &:hover {
+        box-shadow: 0px 0px 12px 4px $lights-around-light;
+        p {
+          text-shadow: 0 0 16px $lights-around-light;
+        }
+      }
+    }
+    &__favorite {
+      background-color: $background-color-light;
+    }
+  }
+  ul.pagination {
+    li.link-num {
+      &.--active {
+        border-color: $lights-around-light;
+      }
+    }
+    a,
+    span {
+      color: $font-light;
+      &:hover {
+        text-shadow: 0 0 16px $lights-around-light;
+      }
+    }
+  }
+
+  .description {
+    h6,
+    p,
+    summary {
+      color: $font-second-light;
+      span {
+        color: $font-light;
+      }
+    }
+    summary {
+      &:hover {
+        text-shadow: 0 0 16px $lights-around-light;
+      }
+    }
+    details {
+      &[open] {
+        summary {
+          &::marker {
+            color: $lights-around-light;
+          }
+        }
+      }
+    }
+  }
 }
 
 body > div {
@@ -41,10 +126,10 @@ header {
   position: fixed;
   top: 0;
   z-index: 5;
-  background-color: #24252b;
+  background-color: $header-bgc-dark;
   left: 0;
   right: 0;
-  box-shadow: 3px 5px 20px 0px #2eff00c4;
+  box-shadow: 3px 5px 20px 0px $lights-around-dark;
   nav {
     max-width: 1240px;
     margin: 0 auto;
@@ -64,18 +149,11 @@ header {
     @extend %plateia-700;
     text-decoration: none;
     text-transform: uppercase;
-    color: #fff;
     font-size: 1.8rem;
     line-height: 2rem;
     height: 100%;
     display: block;
     transition: all 0.3s;
-    &:hover {
-      text-shadow: 0 0 16px #00ff04;
-    }
-    &.--active {
-      text-shadow: 0 0 16px #00ff04;
-    }
   }
 
   .logo {
@@ -92,7 +170,7 @@ header {
 }
 
 footer {
-  background-color: #4d4d4d;
+  background-color: $footer-bgc-dark;
   padding: 10px 0;
   .container {
     display: flex;
@@ -115,14 +193,13 @@ footer {
     align-items: center;
     padding: 10px;
     text-decoration: none;
-    color: #fff;
     transition: all 0.3s;
     border-radius: 10px;
     &:hover {
-      box-shadow: 0px 0px 12px 4px #2eff00c4;
+      box-shadow: 0px 0px 12px 4px $lights-around-dark;
       transform: scale(1.1);
       p {
-        text-shadow: 0 0 16px #00ff04;
+        text-shadow: 0 0 16px $lights-around-dark;
       }
     }
   }
@@ -150,7 +227,7 @@ footer {
     height: 30px;
     padding: 2px;
     border-top-left-radius: 25px;
-    background-color: #27272e;
+    background-color: $background-color-dark;
     bottom: -1px;
     right: -1px;
   }
@@ -170,7 +247,7 @@ ul.pagination {
     height: 40px;
     &.--active {
       border-radius: 50%;
-      border: 1px solid #00ff04;
+      border: 1px solid $lights-around-dark;
     }
   }
   a,
@@ -180,13 +257,13 @@ ul.pagination {
     font-size: 1.4em;
     display: block;
     line-height: 1.6em;
-    color: #fff;
+    color: $font-dark;
   }
   a {
     text-decoration: none;
     transition: all 0.3s;
     &:hover {
-      text-shadow: 0 0 16px #00ff04;
+      text-shadow: 0 0 16px $lights-around-dark;
       stroke: #24252b;
     }
   }
@@ -204,9 +281,9 @@ ul.pagination {
     margin-bottom: 10px;
     line-height: 2.4rem;
     font-style: italic;
-    color: #ececec;
+    color: $font-second-dark;
     span {
-      color: #ffffff;
+      color: $font-dark;
       font-style: normal;
       font-weight: 700;
       padding-left: 2vw;
@@ -229,11 +306,10 @@ ul.pagination {
     cursor: pointer;
     transition: all 0.3s;
     &:hover {
-      text-shadow: 0 0 16px #00ff04;
+      text-shadow: 0 0 16px $lights-around-dark;
     }
   }
   a {
-    color: #fff;
     padding-left: 2vw;
     text-decoration: none;
     letter-spacing: 1px;
@@ -241,10 +317,6 @@ ul.pagination {
     font-weight: 700;
     line-height: 2.8rem;
     transition: all 0.3s;
-    &:hover {
-      color: #3cf43e;
-      text-shadow: 0 0 16px #00ff04;
-    }
   }
   details {
     display: block;
@@ -262,7 +334,7 @@ ul.pagination {
     &[open] {
       summary {
         &::marker {
-          color: rgb(0, 255, 26);
+          color: $lights-around-dark;
         }
       }
       div {
@@ -361,10 +433,10 @@ ul.pagination {
       font-size: 1.6rem;
       line-height: 1.8rem;
       text-decoration: none;
-      color: #fff;
+      color: $font-dark;
       transition: all 0.3s;
       &:hover {
-        text-shadow: 0 0 16px #00ff04;
+        text-shadow: 0 0 16px $lights-around-dark;
         stroke: #24252b;
       }
     }

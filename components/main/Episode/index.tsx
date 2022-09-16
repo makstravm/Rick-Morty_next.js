@@ -2,7 +2,7 @@ import { FC, MouseEvent, useContext } from "react";
 import { useRouter } from "next/router";
 
 import { API } from "api";
-import { UserContext } from "context/userContext";
+import { UserContext } from "context/UserContext";
 
 import { routesUrls } from "constants/routes";
 
@@ -67,9 +67,7 @@ const Episode: FC<IEpisodeProps> = ({
     <section className={`container`}>
       <h4>
         Episode {episode.slice(-2)}
-        <span
-          style={{ display: "block", fontSize: "1.4rem", color: "#ececec" }}
-        >
+        <span style={{ display: "block", fontSize: "1.4rem" }}>
           ( Season {episode.slice(1, 3)} )
           <FavoriteBtn
             isFavorite={isFavorite}

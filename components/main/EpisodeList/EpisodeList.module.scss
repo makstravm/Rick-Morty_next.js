@@ -15,9 +15,22 @@
   padding: 2vw;
   margin: 1vw;
   text-decoration: none;
-  color: #fff;
   position: relative;
   transition: all 0.3s;
+  &.light {
+    div {
+      -webkit-text-stroke: 3px rgb(0, 155, 16);
+    }
+    &:hover {
+      box-shadow: 0 1px 0 0 rgb(0, 117, 12);
+      div {
+        text-shadow: 0 0 50px #6d7b6d;
+      }
+      h6 {
+        text-shadow: 0 0 16px #008002;
+      }
+    }
+  }
   div {
     font-family: "Plateia";
     font-weight: 700;
